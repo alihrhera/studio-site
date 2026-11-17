@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 760" role="img" aria-label="Three stacked layers">
+  <g font-family="Hanken Grotesk Variable, system-ui, sans-serif" font-size="30" font-weight="500">
+    <g transform="translate(450 110)"><path d="M0 0l330 130-330 130-330-130z" fill="#9ae187"/><path d="M-330 130v40l330 130v-40z" fill="#5f8c54"/><path d="M0 260v40l330-130v-40z" fill="#74a866"/><text x="-120" y="140" transform="skewY(21)" fill="#0d0d0d">Mobile</text></g>
+    <g transform="translate(450 250)"><path d="M0 0l330 130-330 130-330-130z" fill="#b9c8ff"/><path d="M-330 130v40l330 130v-40z" fill="#707a9e"/><path d="M0 260v40l330-130v-40z" fill="#8f9bc4"/><text x="-120" y="140" transform="skewY(21)" fill="#0d0d0d">Dashboard</text></g>
+    <g transform="translate(450 390)"><path d="M0 0l330 130-330 130-330-130z" fill="#f3ea7a"/><path d="M-330 130v40l330 130v-40z" fill="#968f4c"/><path d="M0 260v40l330-130v-40z" fill="#bab25e"/><text x="-120" y="140" transform="skewY(21)" fill="#0d0d0d">API</text></g>
+  </g>
+</svg>

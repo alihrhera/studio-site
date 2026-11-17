@@ -1,0 +1,58 @@
+---
+import { getCollection } from 'astro:content';
+import { layers, shownName, sorted } from '../data/layers';
+
+const projects = sorted(await getCollection('projects'));
+const forLayer = (id: string) => projects.filter((p) => p.data.layers.includes(id as never)).map(shownName);
+---
+<section class="hero" data-field="#000" data-ink="#fff">
+  <h1 class="hero-title reveal">We ship the whole product.</h1>
+  <div class="hero-body">
+    <div class="hero-copy">
+      <p class="lead reveal">Four engineers across mobile, API and dashboard. The whole product from one squad.</p>
+      <a class="btn btn--accent reveal" href="#audit">Book a one-week audit</a>
+      <ul class="picker reveal" aria-label="The three layers and the projects that shipped them">
+        {layers.map((l) => (
+          <li style={`--c:${l.color}`}>
+            <button type="button" data-layer={l.id} aria-pressed="false">
+              <span class="picker-name">{l.label}</span>
+              <span class="picker-in">{forLayer(l.id).join(', ')}</span>
+            </button>
+          </li>
+        ))}
+      </ul>
+    </div>
+    <div class="stack" id="stack" data-layers={JSON.stringify(layers.map(({ id, label, color, kind }) => ({ id, label, color, kind })))}>
+      <img class="stack-fallback" src="/stack-fallback.svg" width="900" height="760" alt="Three stacked layers: mobile, dashboard and API" />
+    </div>
+  </div>
+</section>
+
+<script>
+  import type { StackHandle } from '../scripts/layer-stack';
+  const host = document.getElementById('stack')!;
+  const buttons = [...document.querySelectorAll<HTMLButtonElement>('.picker button')];
+  let handle: StackHandle | null = null;
+  let current: string | null = null;
+
+  const set = (id: string | null) => {
+    current = id;
+    buttons.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.layer === id)));
+    host.dataset.selected = id ?? '';
+    handle?.select(id);
+  };
+  buttons.forEach((b) => b.addEventListener('click', () => set(current === b.dataset.layer ? null : b.dataset.layer!)));
+
+  // Load three.js only when the stack is near the screen.
+  const io = new IntersectionObserver(async ([e]) => {
+    if (!e.isIntersecting) return;
+    io.disconnect();
+    try {
+      await document.fonts.load('500 30px "Hanken Grotesk Variable"');
+      const { mountLayerStack } = await import('../scripts/layer-stack');
+      handle = mountLayerStack(host, { layers: JSON.parse(host.dataset.layers!) });
+      if (current) handle?.select(current);
+    } catch { /* the static fallback stays */ }
+  }, { rootMargin: '200px' });
+  io.observe(host);
+</script>
