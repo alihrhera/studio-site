@@ -1,0 +1,34 @@
+/* Direction: Colour chapters (Taste seed 814124239). Colours are placeholders for each product's own colour way. */
+:root {
+  --bg: #000;
+  --surface: #0d0d0d;
+  --surface-2: #181818;
+  --ink: #fff;
+  --muted: #a8a8a8;
+  --accent: #93f1f7;
+  --accent-ink: #000;
+
+  --mint: #9ae187;
+  --cyan: #93f1f7;
+  --lemon: #f3ea7a;
+  --orange: #fbb65c;
+  --cornflower: #b9c8ff;
+
+  --margin: clamp(16px, 2.2vw, 32px);
+  --gap: clamp(8px, 1vw, 16px);
+  --section: clamp(88px, 12vw, 200px);
+
+  --font: 'Hanken Grotesk Variable', 'Cairo Variable', system-ui, sans-serif;
+
+  --step-small: clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem);
+  --step-body: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+  --step-lead: clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem);
+  --step-head: clamp(2.25rem, 1rem + 5.2vw, 6.25rem);
+  --step-display: clamp(3rem, 0.5rem + 9.4vw, 9.5rem);
+
+  --ease: cubic-bezier(0.2, 0.7, 0.1, 1);
+}
+
+html[dir='rtl'] {
+  --font: 'Cairo Variable', 'Hanken Grotesk Variable', system-ui, sans-serif;
+}

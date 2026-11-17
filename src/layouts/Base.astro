@@ -1,0 +1,39 @@
+---
+import '@fontsource-variable/hanken-grotesk';
+import '@fontsource-variable/cairo';
+import '../styles/tokens.css';
+import '../styles/global.css';
+import Wordmark from '../components/Wordmark.astro';
+
+interface Props { title: string; description: string; ink?: 'dark' | 'light' }
+const { title, description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Crect width='8' height='8' fill='%2393f1f7'/%3E%3C/svg%3E" />
+  </head>
+  <body>
+    <header class="nav" id="nav">
+      <a class="nav-mark" href="/" aria-label="Home"><Wordmark /></a>
+      <nav class="nav-links" aria-label="Main">
+        <a href="/#work">Work</a>
+        <a href="/#layers">What we cover</a>
+        <a href="/#team">Team</a>
+      </nav>
+      <a class="btn" href="/#audit">Book an audit</a>
+    </header>
+    <main>
+      <slot />
+    </main>
+    <script>
+      import { initMotion } from '../scripts/motion';
+      initMotion();
+    </script>
+  </body>
+</html>
