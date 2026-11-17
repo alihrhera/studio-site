@@ -19,7 +19,7 @@ const layerLabel = (id: string) => layers.find((l) => l.id === id)!.label;
         <a class="link reveal" href={`/work/${p.id}/`}>Read the case study</a>
       </div>
       {shotsFor(p)[0] ? (
-        <figure class="shot shot--wide shot--chapter reveal">
+        <figure class={`shot shot--${shotsFor(p)[0].kind} shot--chapter reveal`}>
           <img src={shotsFor(p)[0].src} alt={shotsFor(p)[0].alt} loading="lazy" decoding="async" width={shotsFor(p)[0].width} height={shotsFor(p)[0].height} />
         </figure>
       ) : (
