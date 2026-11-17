@@ -20,7 +20,7 @@ const layerLabel = (id: string) => layers.find((l) => l.id === id)!.label;
       </div>
       {shotsFor(p)[0] ? (
         <figure class="shot shot--wide shot--chapter reveal">
-          <img src={shotsFor(p)[0].src} alt={shotsFor(p)[0].alt} loading="lazy" decoding="async" width="1440" height="900" />
+          <img src={shotsFor(p)[0].src} alt={shotsFor(p)[0].alt} loading="lazy" decoding="async" width={shotsFor(p)[0].width} height={shotsFor(p)[0].height} />
         </figure>
       ) : (
         <Screen {...p.data.fragment} label={`Sample screen from ${shownName(p)}`} />

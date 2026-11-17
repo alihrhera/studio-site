@@ -21,7 +21,7 @@ const projects = defineCollection({
     solution: z.string(),
     result: z.string().optional(), // only real, approved results
     // Real pictures. Shown only when permission is true.
-    shots: z.array(z.object({ src: z.string(), alt: z.string(), kind: z.enum(['wide', 'phone']) })).default([]),
+    shots: z.array(z.object({ src: z.string(), alt: z.string(), kind: z.enum(['wide', 'phone']), width: z.number().default(1440), height: z.number().default(900) })).default([]),
     fragment: z.object({
       kind: z.enum(['phone', 'dashboard', 'pos']),
       title: z.string(),

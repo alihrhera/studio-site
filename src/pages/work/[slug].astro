@@ -44,7 +44,7 @@ const label = (id: string) => layers.find((l) => l.id === id)!.label;
       <div class="case-shots">
         {shots.map((s) => (
           <figure class={`shot shot--${s.kind} reveal`}>
-            <img src={s.src} alt={s.alt} loading="lazy" decoding="async" width={s.kind === 'phone' ? 720 : 1440} height={s.kind === 'phone' ? 920 : 900} />
+            <img src={s.src} alt={s.alt} loading="lazy" decoding="async" width={s.kind === 'phone' ? 720 : s.width} height={s.kind === 'phone' ? 920 : s.height} />
           </figure>
         ))}
       </div>
