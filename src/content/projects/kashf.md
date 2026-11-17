@@ -6,7 +6,7 @@ ownedByStudio: true
 layers: [mobile, api]
 summary: A clinic app that keeps a doctor's day, patients and prescriptions in one place.
 role: Mobile app and API
-color: "#93f1f7"
+color: "#a6cdd3"
 order: 1
 problem: A solo doctor ran appointments, records and prescriptions across paper and chat messages.
 solution: A native mobile app with its own API behind it. One doctor per install today, built so a secretary's account can sync with it next.

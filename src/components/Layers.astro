@@ -5,12 +5,12 @@ import Screen from './Screen.astro';
 
 const projects = sorted(await getCollection('projects'));
 ---
-<section id="layers" class="layers-head" data-field="#000" data-ink="#fff">
+<section id="layers" class="layers-head" data-field="#f2eee6" data-ink="#16181d">
   <h2 class="head reveal">Three layers. One product. One squad.</h2>
 </section>
 <div class="sheets">
   {layers.map((l, i) => (
-    <article class="sheet" style={`--f:${l.color}; --i:${i}`} data-field={l.color} data-ink="#000">
+    <article class="sheet" style={`--f:${l.color}; --i:${i}`} data-field={l.color} data-ink="#16181d">
       <h3 class="sheet-name">{l.label}</h3>
       <div class="sheet-body">
         <div>

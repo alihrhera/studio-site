@@ -5,7 +5,7 @@ export type StackLayer = { id: string; label: string; color: string; kind: 'phon
 export type StackHandle = { select(id: string | null): void; destroy(): void };
 
 const W = 3.5, D = 2.4, H = 0.16;
-const INK = '#0d0d0d';
+const INK = '#16181d';
 
 /** Draws one flat interface fragment on the slab's top face. No data is real. */
 function drawTop(layer: StackLayer): THREE.CanvasTexture {

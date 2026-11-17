@@ -1,27 +1,21 @@
 ---
 import { getCollection } from 'astro:content';
-import { layers, shownName, sorted } from '../data/layers';
-import Screen from './Screen.astro';
+import { shownName, sorted } from '../data/layers';
 
 const projects = sorted(await getCollection('projects'));
-const layerLabel = (id: string) => layers.find((l) => l.id === id)!.label;
 ---
-<section id="work" class="work-head" data-field="#000" data-ink="#fff">
+<section id="work" class="work-head" data-field="#f2eee6" data-ink="#16181d">
   <h2 class="head reveal">Five products, our part in each.</h2>
 </section>
-{projects.map((p) => (
-  <article class="chapter" style={`--f:${p.data.color}`} data-field={p.data.color} data-ink="#000">
-    <h3 class="head reveal">{shownName(p)}</h3>
-    <div class="chapter-body">
-      <div class="chapter-text">
-        <p class="lead reveal">{p.data.summary}</p>
-        <dl class="facts reveal">
-          <div><dt>Our part</dt><dd>{p.data.role}</dd></div>
-          <div><dt>Layers</dt><dd>{p.data.layers.map(layerLabel).join(', ')}</dd></div>
-        </dl>
-        <a class="link reveal" href={`/work/${p.id}/`}>Read the case study</a>
-      </div>
-      <Screen {...p.data.fragment} label={`Sample screen from ${shownName(p)}`} />
-    </div>
-  </article>
-))}
+<div class="work-rows">
+  {projects.map((p) => (
+    <a class="work-row reveal" href={`/work/${p.id}/`} style={`--f:${p.data.color}`} data-field={p.data.color} data-ink="#16181d">
+      <span class="work-row-name">{shownName(p)}</span>
+      <span class="work-row-part">{p.data.role}</span>
+      <span class="work-row-go">Case study</span>
+    </a>
+  ))}
+</div>
+<div class="work-foot" data-field="#f2eee6" data-ink="#16181d">
+  <a class="btn reveal" href="/work/">See all work</a>
+</div>

@@ -15,12 +15,13 @@ const name = shownName(p);
 const label = (id: string) => layers.find((l) => l.id === id)!.label;
 ---
 <Base title={`${name}: case study`} description={p.data.summary}>
-  <section class="case-hero" style={`--f:${p.data.color}`} data-field={p.data.color} data-ink="#000">
+  <section class="case-hero" style={`--f:${p.data.color}`} data-field={p.data.color} data-ink="#16181d">
+    <a class="link back" href="/work/">All work</a>
     <h1 class="display reveal">{name}</h1>
     <p class="lead reveal">{p.data.summary}</p>
   </section>
 
-  <section class="case-meta" data-field="#000" data-ink="#fff">
+  <section class="case-meta" data-field="#f2eee6" data-ink="#16181d">
     <dl class="facts facts--wide reveal">
       <div><dt>Our part</dt><dd>{p.data.role}</dd></div>
       <div><dt>Layers</dt><dd>{p.data.layers.map(label).join(', ')}</dd></div>
@@ -28,12 +29,12 @@ const label = (id: string) => layers.find((l) => l.id === id)!.label;
     </dl>
   </section>
 
-  <section class="case-block" data-field="#181818" data-ink="#fff">
+  <section class="case-block" data-field="#dfd9cb" data-ink="#16181d">
     <h2 class="head reveal">The problem</h2>
     <p class="statement reveal">{p.data.problem}</p>
   </section>
 
-  <section class="case-solution" style={`--f:${p.data.color}`} data-field={p.data.color} data-ink="#000">
+  <section class="case-solution" style={`--f:${p.data.color}`} data-field={p.data.color} data-ink="#16181d">
     <div>
       <h2 class="head reveal">What we built</h2>
       <p class="statement reveal">{p.data.solution}</p>
@@ -48,13 +49,13 @@ const label = (id: string) => layers.find((l) => l.id === id)!.label;
   </section>
 
   {p.data.result && (
-    <section class="case-block" data-field="#000" data-ink="#fff">
+    <section class="case-block" data-field="#f2eee6" data-ink="#16181d">
       <h2 class="head reveal">The result</h2>
       <p class="statement reveal">{p.data.result}</p>
     </section>
   )}
 
-  <a class="case-next" href={`/work/${next.id}/`} style={`--f:${next.data.color}`} data-field={next.data.color} data-ink="#000">
+  <a class="case-next" href={`/work/${next.id}/`} style={`--f:${next.data.color}`} data-field={next.data.color} data-ink="#16181d">
     <span class="head reveal">Next: {shownName(next)}</span>
     <Screen {...next.data.fragment} label={`Sample screen from ${shownName(next)}`} />
   </a>

@@ -1,18 +1,21 @@
-/* Direction: Colour chapters (Taste seed 814124239). Colours are placeholders for each product's own colour way. */
+/* Direction: Colour chapters (Taste seed 814124239), on warm paper instead of pure black.
+   Chapter colours are muted so a whole screen of one colour stays easy on the eye. */
 :root {
-  --bg: #000;
-  --surface: #0d0d0d;
-  --surface-2: #181818;
-  --ink: #fff;
-  --muted: #a8a8a8;
-  --accent: #93f1f7;
-  --accent-ink: #000;
+  --bg: #f2eee6;
+  --surface: #e9e4d9;
+  --surface-2: #dfd9cb;
+  --ink: #16181d;
+  --muted: #565a62;
+  --deep: #16181d;
+  --deep-2: #22252c;
+  --accent: #0f5f5a;
+  --accent-ink: #f2eee6;
 
-  --mint: #9ae187;
-  --cyan: #93f1f7;
-  --lemon: #f3ea7a;
-  --orange: #fbb65c;
-  --cornflower: #b9c8ff;
+  --mint: #b6cfae;
+  --cyan: #a6cdd3;
+  --lemon: #e9d9a1;
+  --orange: #e8b695;
+  --cornflower: #bcc4e4;
 
   --margin: clamp(16px, 2.2vw, 32px);
   --gap: clamp(8px, 1vw, 16px);
