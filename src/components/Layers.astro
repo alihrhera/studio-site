@@ -1,14 +1,9 @@
 ---
 import { getCollection } from 'astro:content';
-import { layers, shownName, sorted } from '../data/layers';
+import { layers, samples, shownName, sorted } from '../data/layers';
 import Screen from './Screen.astro';
 
 const projects = sorted(await getCollection('projects'));
-const sample: Record<string, [string, string][]> = {
-  mobile: [['09:30', 'Check-up'], ['10:15', 'Follow-up'], ['11:00', 'New patient']],
-  api: [['GET', '/v1/orders'], ['POST', '/v1/orders'], ['PATCH', '/v1/orders/:id']],
-  dashboard: [['Order received', 'Waiting'], ['Packing', 'In progress'], ['Delivered', 'Done']],
-};
 ---
 <section id="layers" class="layers-head" data-field="#000" data-ink="#fff">
   <h2 class="head reveal">Three layers. One product. One squad.</h2>
@@ -22,7 +17,7 @@ const sample: Record<string, [string, string][]> = {
           <p class="lead">{l.blurb}</p>
           <p class="small">Shipped in: {projects.filter((p) => p.data.layers.includes(l.id)).map(shownName).join(', ')}</p>
         </div>
-        <Screen kind={l.kind} title={l.label} rows={sample[l.id]} label={`Sample ${l.label} screen`} />
+        <Screen kind={l.kind} title={l.label} rows={samples[l.id]} label={`Sample ${l.label} screen`} />
       </div>
     </article>
   ))}

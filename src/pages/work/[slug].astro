@@ -4,7 +4,7 @@ import Base from '../../layouts/Base.astro';
 import Screen from '../../components/Screen.astro';
 import Audit from '../../components/Audit.astro';
 import Footer from '../../components/Footer.astro';
-import { layers, shownName, sorted } from '../../data/layers';
+import { layers, samples, shownName, sorted } from '../../data/layers';
 
 export async function getStaticPaths() {
   const all = sorted(await getCollection('projects'));
@@ -21,7 +21,7 @@ const label = (id: string) => layers.find((l) => l.id === id)!.label;
   </section>
 
   <section class="case-meta" data-field="#000" data-ink="#fff">
-    <dl class="facts facts--wide">
+    <dl class="facts facts--wide reveal">
       <div><dt>Our part</dt><dd>{p.data.role}</dd></div>
       <div><dt>Layers</dt><dd>{p.data.layers.map(label).join(', ')}</dd></div>
       {p.data.period && <div><dt>Period</dt><dd>{p.data.period}</dd></div>}
@@ -38,7 +38,13 @@ const label = (id: string) => layers.find((l) => l.id === id)!.label;
       <h2 class="head reveal">What we built</h2>
       <p class="statement reveal">{p.data.solution}</p>
     </div>
-    <Screen {...p.data.fragment} label={`Sample screen from ${name}`} />
+    <div class="case-screens">
+      <Screen {...p.data.fragment} label={`Sample screen from ${name}`} />
+      {p.data.layers.map((id) => {
+        const l = layers.find((x) => x.id === id)!;
+        return <Screen kind={l.kind} title={l.label} rows={samples[id]} label={`Sample ${l.label} screen from ${name}`} />;
+      })}
+    </div>
   </section>
 
   {p.data.result && (
@@ -49,8 +55,8 @@ const label = (id: string) => layers.find((l) => l.id === id)!.label;
   )}
 
   <a class="case-next" href={`/work/${next.id}/`} style={`--f:${next.data.color}`} data-field={next.data.color} data-ink="#000">
-    <span class="small">Next case study</span>
-    <span class="head">{shownName(next)}</span>
+    <span class="head reveal">Next: {shownName(next)}</span>
+    <Screen {...next.data.fragment} label={`Sample screen from ${shownName(next)}`} />
   </a>
 
   <Audit />

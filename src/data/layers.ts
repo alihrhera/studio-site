@@ -15,3 +15,10 @@ type Project = CollectionEntry<'projects'>;
 export const shownName = (p: Project) => (p.data.permission ? p.data.name : p.data.publicName);
 
 export const sorted = (ps: Project[]) => [...ps].sort((a, b) => a.data.order - b.data.order);
+
+/** Sample screen rows per layer. Labels only, never real data. */
+export const samples: Record<LayerId, [string, string][]> = {
+  mobile: [['09:30', 'Check-up'], ['10:15', 'Follow-up'], ['11:00', 'New patient']],
+  api: [['GET', '/v1/orders'], ['POST', '/v1/orders'], ['PATCH', '/v1/orders/:id']],
+  dashboard: [['Order received', 'Waiting'], ['Packing', 'In progress'], ['Delivered', 'Done']],
+};
