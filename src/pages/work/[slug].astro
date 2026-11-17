@@ -1,0 +1,58 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Screen from '../../components/Screen.astro';
+import Audit from '../../components/Audit.astro';
+import Footer from '../../components/Footer.astro';
+import { layers, shownName, sorted } from '../../data/layers';
+
+export async function getStaticPaths() {
+  const all = sorted(await getCollection('projects'));
+  return all.map((p, i) => ({ params: { slug: p.id }, props: { p, next: all[(i + 1) % all.length] } }));
+}
+const { p, next } = Astro.props as { p: CollectionEntry<'projects'>; next: CollectionEntry<'projects'> };
+const name = shownName(p);
+const label = (id: string) => layers.find((l) => l.id === id)!.label;
+---
+<Base title={`${name}: case study`} description={p.data.summary}>
+  <section class="case-hero" style={`--f:${p.data.color}`} data-field={p.data.color} data-ink="#000">
+    <h1 class="display reveal">{name}</h1>
+    <p class="lead reveal">{p.data.summary}</p>
+  </section>
+
+  <section class="case-meta" data-field="#000" data-ink="#fff">
+    <dl class="facts facts--wide">
+      <div><dt>Our part</dt><dd>{p.data.role}</dd></div>
+      <div><dt>Layers</dt><dd>{p.data.layers.map(label).join(', ')}</dd></div>
+      {p.data.period && <div><dt>Period</dt><dd>{p.data.period}</dd></div>}
+    </dl>
+  </section>
+
+  <section class="case-block" data-field="#181818" data-ink="#fff">
+    <h2 class="head reveal">The problem</h2>
+    <p class="statement reveal">{p.data.problem}</p>
+  </section>
+
+  <section class="case-solution" style={`--f:${p.data.color}`} data-field={p.data.color} data-ink="#000">
+    <div>
+      <h2 class="head reveal">What we built</h2>
+      <p class="statement reveal">{p.data.solution}</p>
+    </div>
+    <Screen {...p.data.fragment} label={`Sample screen from ${name}`} />
+  </section>
+
+  {p.data.result && (
+    <section class="case-block" data-field="#000" data-ink="#fff">
+      <h2 class="head reveal">The result</h2>
+      <p class="statement reveal">{p.data.result}</p>
+    </section>
+  )}
+
+  <a class="case-next" href={`/work/${next.id}/`} style={`--f:${next.data.color}`} data-field={next.data.color} data-ink="#000">
+    <span class="small">Next case study</span>
+    <span class="head">{shownName(next)}</span>
+  </a>
+
+  <Audit />
+  <Footer />
+</Base>
