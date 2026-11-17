@@ -1,7 +1,7 @@
 ---
 name: Disha
 publicName: Grocery delivery platform
-permission: false
+permission: true
 ownedByStudio: false
 layers: [mobile, api, dashboard]
 summary: "An online grocery store: customer app, admin dashboard and API, run live."

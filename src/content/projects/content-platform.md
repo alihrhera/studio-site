@@ -1,7 +1,7 @@
 ---
 name: KN
 publicName: Content and jobs platform
-permission: false
+permission: true
 ownedByStudio: false
 layers: [api, dashboard]
 summary: A dashboard that runs short videos, job posts and news for a content product.

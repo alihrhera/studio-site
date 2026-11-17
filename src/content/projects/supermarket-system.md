@@ -1,7 +1,7 @@
 ---
 name: Stores
 publicName: Supermarket management system
-permission: false
+permission: true
 ownedByStudio: true
 layers: [mobile, api, dashboard]
 summary: "A supermarket system: admin panel, point of sale and a customer app on one backend."
