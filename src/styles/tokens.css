@@ -24,7 +24,7 @@
   --step-body: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
   --step-lead: clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem);
   --step-head: clamp(2.25rem, 1rem + 5.2vw, 6.25rem);
-  --step-display: clamp(3rem, 0.5rem + 9.4vw, 9.5rem);
+  --step-display: clamp(3rem, 0.5rem + 8.2vw, 8.5rem);
 
   --ease: cubic-bezier(0.2, 0.7, 0.1, 1);
 }

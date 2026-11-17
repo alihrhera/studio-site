@@ -29,14 +29,14 @@ function reveal() {
       const n = seen.get(el.parentElement!) ?? 0;
       seen.set(el.parentElement!, n + 1);
       el.dataset.delay = String(Math.min(n, 6) * 0.075);
-      el.style.opacity = '0'; el.style.transform = 'translateY(26px)';
+      el.style.opacity = '0.55'; el.style.transform = 'translateY(26px)';
     });
     els.forEach((el) =>
       inView(el, () => {
-        animate(el, { opacity: [0, 1], transform: ['translateY(26px)', 'translateY(0px)'] }, { duration: 0.7, delay: Number(el.dataset.delay), ease }).finished.then(() => show(el));
+        animate(el, { opacity: [0.55, 1], transform: ['translateY(26px)', 'translateY(0px)'] }, { duration: 0.7, delay: Number(el.dataset.delay), ease }).finished.then(() => show(el));
       }, { margin: '0px 0px -8% 0px' }),
     );
-    setTimeout(() => els.forEach((el) => { if (el.style.opacity === '0' && el.getBoundingClientRect().top < innerHeight) show(el); }), 3000);
+    setTimeout(() => els.forEach((el) => { if (el.style.opacity === '0.55' && el.getBoundingClientRect().top < innerHeight) show(el); }), 3000);
   } catch { els.forEach(show); }
 }
 

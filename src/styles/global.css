@@ -49,19 +49,21 @@ a { color: inherit; }
   display: grid; grid-template-rows: auto 1fr; gap: clamp(24px, 3vw, 48px);
 }
 .hero-title { font-size: var(--step-display); font-weight: 500; line-height: 0.9; letter-spacing: -0.05em; text-wrap: balance; }
-.hero-body { display: grid; grid-template-columns: repeat(12, 1fr); gap: var(--gap); align-items: end; }
-.hero-copy { grid-column: 1 / span 5; display: grid; gap: 24px; justify-items: start; }
+.hero { grid-template-columns: repeat(12, 1fr); grid-template-rows: auto 1fr; column-gap: var(--gap); }
+.hero-title { grid-column: 1 / span 7; grid-row: 1; }
+.hero-body { display: contents; }
+.hero-copy { grid-column: 1 / span 5; grid-row: 2; display: grid; gap: 24px; justify-items: start; align-self: end; }
 .picker { inline-size: 100%; display: grid; gap: 4px; margin-block-start: 8px; }
 .picker button {
-  inline-size: 100%; display: flex; justify-content: space-between; align-items: baseline; gap: 16px;
+  inline-size: 100%; display: grid; gap: 2px;
   padding: 14px 16px; border: 0; border-radius: 0; background: var(--surface-2); color: var(--ink);
   font: inherit; text-align: start; cursor: pointer; transition: background-color 0.2s, color 0.2s, transform 0.2s var(--ease);
 }
 .picker button:hover, .picker button[aria-pressed='true'] { background: var(--c); color: #000; }
 .picker button:active { transform: scale(0.99); }
 .picker-name { font-weight: 500; }
-.picker-in { font-size: var(--step-small); text-align: end; }
-.stack { grid-column: 6 / -1; position: relative; min-block-size: 56svh; }
+.picker-in { font-size: var(--step-small); }
+.stack { grid-column: 8 / -1; grid-row: 1 / span 2; position: relative; min-block-size: 60svh; }
 .stack canvas { position: absolute; inset: 0; inline-size: 100%; block-size: 100%; display: block; }
 .stack-fallback { position: absolute; inset: 0; inline-size: 100%; block-size: 100%; object-fit: contain; }
 .stack.is-live .stack-fallback { display: none; }
@@ -97,10 +99,10 @@ a { color: inherit; }
 /* Layers: stacking colour sheets */
 .sheets { display: block; }
 .sheet {
-  position: sticky; inset-block-start: calc(56px + var(--i) * 56px); min-block-size: 78svh; background: var(--f); color: #000;
+  min-block-size: 70svh; background: var(--f); color: #000;
   padding: 20px var(--margin) clamp(32px, 4vw, 64px); display: flex; flex-direction: column; gap: 40px;
 }
-.sheet-name { font-size: var(--step-lead); font-weight: 500; letter-spacing: -0.02em; line-height: 1; block-size: 16px; }
+.sheet-name { font-size: var(--step-lead); font-weight: 500; letter-spacing: -0.02em; line-height: 1; }
 .sheet-body { display: grid; grid-template-columns: repeat(12, 1fr); gap: var(--gap); align-items: end; flex: 1; }
 .sheet-body > div { grid-column: 1 / span 5; display: grid; gap: 16px; align-self: end; }
 .sheet-body .frag { grid-column: 8 / span 5; }
@@ -123,7 +125,7 @@ a { color: inherit; }
 .person h3 { font-size: var(--step-lead); font-weight: 500; letter-spacing: -0.02em; line-height: 1.1; }
 
 /* Audit: the page inverted */
-.audit { background: #fff; color: #000; min-block-size: 90svh; padding: var(--section) var(--margin) clamp(32px, 4vw, 56px); display: flex; flex-direction: column; justify-content: space-between; gap: 64px; }
+.audit { background: #fff; color: #000; padding: var(--section) var(--margin) clamp(40px, 5vw, 72px); display: flex; flex-direction: column; gap: clamp(64px, 9vw, 140px); }
 .audit h2 { font-size: var(--step-display); }
 .audit-foot { display: grid; grid-template-columns: repeat(12, 1fr); gap: var(--gap); align-items: end; }
 .audit-foot .lead { grid-column: 1 / span 5; }
@@ -158,9 +160,13 @@ a { color: inherit; }
 .case-block .statement { grid-column: 7 / -1; }
 .case-block:nth-of-type(odd) { background: #000; }
 .case-solution { background: var(--f); color: #000; padding: var(--section) var(--margin); display: grid; grid-template-columns: repeat(12, 1fr); gap: var(--gap); align-items: end; }
-.case-solution > div { grid-column: 1 / span 6; display: grid; gap: 32px; }
-.case-solution .frag { grid-column: 8 / span 5; }
-.case-next { display: flex; flex-direction: column; gap: 12px; padding: var(--section) var(--margin); background: var(--f); color: #000; text-decoration: none; transition: padding-inline-start 0.3s var(--ease); }
+.case-solution > div:first-child { grid-column: 1 / span 4; display: grid; gap: 32px; align-self: start; }
+.case-screens { grid-column: 6 / -1; display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--gap); align-items: start; }
+.case-screens .frag--phone { max-inline-size: none; }
+.case-block .statement, .case-solution .statement { max-inline-size: 60ch; }
+.case-next { display: grid; grid-template-columns: repeat(12, 1fr); gap: var(--gap); align-items: end; padding: var(--section) var(--margin); background: var(--f); color: #000; text-decoration: none; transition: padding-inline-start 0.3s var(--ease); }
+.case-next > .head { grid-column: 1 / span 7; }
+.case-next .frag { grid-column: 8 / span 5; }
 .case-next:hover { padding-inline-start: calc(var(--margin) + 24px); }
 
 @media (max-width: 900px) {
@@ -168,12 +174,15 @@ a { color: inherit; }
   .nav .btn { margin-inline-start: auto; }
   .hero { padding-block-start: 88px; }
   .hero-copy, .stack, .chapter-text, .chapter-body .frag, .sheet-body > div, .sheet-body .frag,
-  .case-block h2, .case-block .statement, .case-solution > div, .case-solution .frag,
-  .band h3, .band p, .footer-places, .footer-links, .audit-foot .lead, .audit-foot .btn { grid-column: 1 / -1; }
-  .stack { min-block-size: 92vw; }
-  .frag--phone { justify-self: start; }
+  .case-block h2, .case-block .statement, .case-solution > div:first-child,
+  .case-screens, .case-next > .head, .case-next .frag, .band h3, .band p, .footer-places, .footer-links, .audit-foot .lead, .audit-foot .btn { grid-column: 1 / -1; }
+  .frag--phone { justify-self: stretch; max-inline-size: none; min-block-size: 0; }
   .chapter { min-block-size: auto; }
-  .sheet { inset-block-start: calc(52px + var(--i) * 44px); min-block-size: 70svh; }
+  .sheet { min-block-size: 0; }
+  .hero { grid-template-columns: 1fr; }
+  .hero-title, .hero-copy { grid-column: 1 / -1; grid-row: auto; }
+  .stack { grid-row: auto; order: 2; min-block-size: 74vw; }
+  .hero-title { order: 1; } .hero-copy { order: 3; }
   .tiles { grid-template-columns: 1fr; }
   .stage--1 .tile { block-size: 34vw; } .stage--2 .tile { block-size: 46vw; } .stage--3 .tile { block-size: 62vw; }
   .people { grid-template-columns: 1fr 1fr; }
