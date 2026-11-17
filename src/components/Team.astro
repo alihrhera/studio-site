@@ -1,0 +1,22 @@
+---
+import { layers } from '../data/layers';
+const people = [
+  { role: 'Mobile engineer', layer: 'mobile', text: 'Native apps, offline-first and secure.' },
+  { role: 'Mobile engineer', layer: 'mobile', text: 'One codebase for iOS and Android, screens that change without a store release.' },
+  { role: 'Backend engineer', layer: 'api', text: 'APIs, payments, queues and data.' },
+  { role: 'Frontend engineer', layer: 'dashboard', text: 'The admin dashboards and the web.' },
+];
+const color = (id: string) => layers.find((l) => l.id === id)!.color;
+---
+<section id="team" class="team" data-field="#181818" data-ink="#fff">
+  <h2 class="head reveal">Four engineers, one squad.</h2>
+  <ul class="people">
+    {people.map((p) => (
+      <li class="person reveal" style={`--f:${color(p.layer)}`}>
+        <h3>{p.role}</h3>
+        <p>{p.text}</p>
+      </li>
+    ))}
+  </ul>
+  <p class="statement reveal">Remote from Egypt. We work in English or Arabic with your team.</p>
+</section>

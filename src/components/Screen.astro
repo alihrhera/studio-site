@@ -1,0 +1,15 @@
+---
+// A flat interface fragment rebuilt in HTML. Sample labels only, never real data.
+interface Props { kind: 'phone' | 'dashboard' | 'pos'; title: string; rows: [string, string][]; label: string }
+const { kind, title, rows, label } = Astro.props;
+---
+<figure class={`frag frag--${kind} reveal`} data-ui role="img" aria-label={label}>
+  <div class="frag-bar"><span>{title}</span><span class="frag-dot"></span></div>
+  <ul class="frag-rows">
+    {rows.map(([a, b], i) => (
+      <li class={i === 0 ? 'is-first' : ''}><span>{a}</span><span>{b}</span></li>
+    ))}
+  </ul>
+  {kind === 'pos' && <div class="frag-total"><span>Pay</span><span>Cash or card</span></div>}
+  {kind === 'phone' && <div class="frag-nav"><span>Today</span><span>Patients</span><span>More</span></div>}
+</figure>

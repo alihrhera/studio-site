@@ -1,0 +1,27 @@
+---
+import { getCollection } from 'astro:content';
+import { layers, shownName, sorted } from '../data/layers';
+import Screen from './Screen.astro';
+
+const projects = sorted(await getCollection('projects'));
+const layerLabel = (id: string) => layers.find((l) => l.id === id)!.label;
+---
+<section id="work" class="work-head" data-field="#000" data-ink="#fff">
+  <h2 class="head reveal">Five products, our part in each.</h2>
+</section>
+{projects.map((p) => (
+  <article class="chapter" style={`--f:${p.data.color}`} data-field={p.data.color} data-ink="#000">
+    <h3 class="head reveal">{shownName(p)}</h3>
+    <div class="chapter-body">
+      <div class="chapter-text">
+        <p class="lead reveal">{p.data.summary}</p>
+        <dl class="facts reveal">
+          <div><dt>Our part</dt><dd>{p.data.role}</dd></div>
+          <div><dt>Layers</dt><dd>{p.data.layers.map(layerLabel).join(', ')}</dd></div>
+        </dl>
+        <a class="link reveal" href={`/work/${p.id}/`}>Read the case study</a>
+      </div>
+      <Screen {...p.data.fragment} label={`Sample screen from ${shownName(p)}`} />
+    </div>
+  </article>
+))}

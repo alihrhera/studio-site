@@ -1,0 +1,20 @@
+---
+const qa = [
+  ['Who are you?', 'Four engineers: two on mobile, one on the API, one on the dashboard. We build the app, the API and the dashboard together, so nothing gets lost between teams.'],
+  ['What does the audit cost?', 'A fixed price, agreed before we start. You send us the app or the repository, we tell you the price, and we only begin once you agree.'],
+  ['Where are you based?', 'Remote, from Egypt. We work in English or Arabic and overlap with your working hours in Europe or the Gulf.'],
+  ['Can I see your code?', 'The case studies show what we built and which part was ours. Under an NDA we can walk you through the code itself.'],
+  ['Who owns the code?', 'You do. Ownership passes to you at delivery and is written into the contract.'],
+];
+---
+<section id="faq" data-field="#93f1f7" data-ink="#000" class="faq-head">
+  <h2 class="head reveal">Questions we hear first.</h2>
+</section>
+<div class="faq">
+  {qa.map(([q, a], i) => (
+    <div class={`band ${i % 2 ? 'band--b' : 'band--a'}`} data-field={i % 2 ? '#181818' : '#000'} data-ink="#fff">
+      <h3 class="reveal">{q}</h3>
+      <p class="reveal">{a}</p>
+    </div>
+  ))}
+</div>
