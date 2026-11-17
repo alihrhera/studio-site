@@ -13,8 +13,10 @@ shots:
     alt: "The Kashf website, with a sample of the doctor app"
     kind: wide
   - src: "/work/kashf-app.webp"
-    alt: "The Kashf doctor app home screen"
+    alt: "The Kashf doctor app new patient form"
     kind: phone
+    width: 720
+    height: 1487
 problem: A solo doctor ran appointments, records and prescriptions across paper and chat messages.
 solution: A native mobile app with its own API behind it. One doctor per install today, built so a secretary's account can sync with it next.
 fragment:
