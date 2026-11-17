@@ -25,6 +25,10 @@ for (const f of files) {
   const publicName = scalar(fm, 'publicName');
   if (!name || !publicName) errors.push(`${f}: name and publicName are required`);
   if (!/^layers:\s*\[.+\]/m.test(fm)) errors.push(`${f}: needs at least one layer`);
+  if (scalar(fm, 'permission') !== 'true') {
+    for (const [, src] of fm.matchAll(/src:\s*"([^"]+)"/g))
+      for (const [p, h] of html) if (h.includes(src)) errors.push(`${f}: picture ${src} shown without permission in ${p}`);
+  }
   if (scalar(fm, 'permission') !== 'true' && name && name !== publicName) {
     const re = new RegExp(`\\b${name}\\b`);
     for (const [p, h] of html) if (re.test(h)) errors.push(`${f}: "${name}" leaks in ${p} without permission`);

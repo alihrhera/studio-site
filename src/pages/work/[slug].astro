@@ -4,7 +4,7 @@ import Base from '../../layouts/Base.astro';
 import Screen from '../../components/Screen.astro';
 import Audit from '../../components/Audit.astro';
 import Footer from '../../components/Footer.astro';
-import { layers, samples, shownName, sorted } from '../../data/layers';
+import { layers, samples, shotsFor, shownName, sorted } from '../../data/layers';
 
 export async function getStaticPaths() {
   const all = sorted(await getCollection('projects'));
@@ -12,6 +12,7 @@ export async function getStaticPaths() {
 }
 const { p, next } = Astro.props as { p: CollectionEntry<'projects'>; next: CollectionEntry<'projects'> };
 const name = shownName(p);
+const shots = shotsFor(p);
 const label = (id: string) => layers.find((l) => l.id === id)!.label;
 ---
 <Base title={`${name}: case study`} description={p.data.summary}>
@@ -39,13 +40,23 @@ const label = (id: string) => layers.find((l) => l.id === id)!.label;
       <h2 class="head reveal">What we built</h2>
       <p class="statement reveal">{p.data.solution}</p>
     </div>
-    <div class="case-screens">
-      <Screen {...p.data.fragment} label={`Sample screen from ${name}`} />
-      {p.data.layers.map((id) => {
-        const l = layers.find((x) => x.id === id)!;
-        return <Screen kind={l.kind} title={l.label} rows={samples[id]} label={`Sample ${l.label} screen from ${name}`} />;
-      })}
-    </div>
+    {shots.length > 0 ? (
+      <div class="case-shots">
+        {shots.map((s) => (
+          <figure class={`shot shot--${s.kind} reveal`}>
+            <img src={s.src} alt={s.alt} loading="lazy" decoding="async" width={s.kind === 'phone' ? 720 : 1440} height={s.kind === 'phone' ? 920 : 900} />
+          </figure>
+        ))}
+      </div>
+    ) : (
+      <div class="case-screens">
+        <Screen {...p.data.fragment} label={`Sample screen from ${name}`} />
+        {p.data.layers.map((id) => {
+          const l = layers.find((x) => x.id === id)!;
+          return <Screen kind={l.kind} title={l.label} rows={samples[id]} label={`Sample ${l.label} screen from ${name}`} />;
+        })}
+      </div>
+    )}
   </section>
 
   {p.data.result && (

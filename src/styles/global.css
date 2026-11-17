@@ -180,6 +180,11 @@ a { color: inherit; }
 .case-solution > div:first-child { grid-column: 1 / span 4; display: grid; gap: 32px; align-self: start; }
 .case-screens { grid-column: 6 / -1; display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--gap); align-items: start; }
 .case-screens .frag--phone { max-inline-size: none; }
+.case-shots { grid-column: 6 / -1; display: grid; gap: var(--gap); align-items: start; }
+.shot { margin: 0; }
+.shot img { display: block; inline-size: 100%; block-size: auto; border-radius: 14px; }
+.shot--phone { justify-self: start; max-inline-size: 340px; }
+.chapter-body .shot { grid-column: 7 / span 6; }
 .case-block .statement, .case-solution .statement { max-inline-size: 60ch; }
 .case-next { display: grid; grid-template-columns: repeat(12, 1fr); gap: var(--gap); align-items: end; padding: var(--section) var(--margin); background: var(--f); color: var(--deep); text-decoration: none; transition: padding-inline-start 0.3s var(--ease); }
 .case-next > .head { grid-column: 1 / span 7; }
@@ -195,7 +200,7 @@ a { color: inherit; }
   .hero { padding-block-start: 88px; }
   .hero-copy, .stack, .chapter-text, .chapter-body .frag, .sheet-body > div, .sheet-body .frag,
   .case-block h2, .case-block .statement, .case-solution > div:first-child,
-  .case-screens, .case-next > .head, .case-next .frag, .band h3, .band p, .footer-places, .footer-links, .audit-foot .lead, .audit-foot .btn { grid-column: 1 / -1; }
+  .case-screens, .case-shots, .chapter-body .shot, .case-next > .head, .case-next .frag, .band h3, .band p, .footer-places, .footer-links, .audit-foot .lead, .audit-foot .btn { grid-column: 1 / -1; }
   .frag--phone { justify-self: stretch; max-inline-size: none; min-block-size: 0; }
   .chapter { min-block-size: auto; }
   .sheet { min-block-size: 0; }

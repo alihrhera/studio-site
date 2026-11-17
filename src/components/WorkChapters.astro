@@ -1,6 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import { layers, shownName, sorted } from '../data/layers';
+import { layers, shotsFor, shownName, sorted } from '../data/layers';
 import Screen from './Screen.astro';
 
 const projects = sorted(await getCollection('projects'));
@@ -18,7 +18,13 @@ const layerLabel = (id: string) => layers.find((l) => l.id === id)!.label;
         </dl>
         <a class="link reveal" href={`/work/${p.id}/`}>Read the case study</a>
       </div>
-      <Screen {...p.data.fragment} label={`Sample screen from ${shownName(p)}`} />
+      {shotsFor(p)[0] ? (
+        <figure class="shot shot--wide shot--chapter reveal">
+          <img src={shotsFor(p)[0].src} alt={shotsFor(p)[0].alt} loading="lazy" decoding="async" width="1440" height="900" />
+        </figure>
+      ) : (
+        <Screen {...p.data.fragment} label={`Sample screen from ${shownName(p)}`} />
+      )}
     </div>
   </article>
 ))}

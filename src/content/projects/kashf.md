@@ -8,6 +8,13 @@ summary: A clinic app that keeps a doctor's day, patients and prescriptions in o
 role: Mobile app and API
 color: "#a6cdd3"
 order: 1
+shots:
+  - src: "/work/kashf-site.webp"
+    alt: "The Kashf website, with a sample of the doctor app"
+    kind: wide
+  - src: "/work/kashf-app.webp"
+    alt: "The Kashf doctor app home screen"
+    kind: phone
 problem: A solo doctor ran appointments, records and prescriptions across paper and chat messages.
 solution: A native mobile app with its own API behind it. One doctor per install today, built so a secretary's account can sync with it next.
 fragment:

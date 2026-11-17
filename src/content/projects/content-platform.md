@@ -8,6 +8,10 @@ summary: A dashboard that runs short videos, job posts and news for a content pr
 role: Backend and dashboard
 color: "#e9d9a1"
 order: 5
+shots:
+  - src: "/work/kn-site.webp"
+    alt: "The public website of the content and jobs platform"
+    kind: wide
 problem: Editors needed to publish reels, jobs and news from one place without a developer.
 solution: A dashboard and API for reels, job posts and news, with an editorial workflow.
 fragment:

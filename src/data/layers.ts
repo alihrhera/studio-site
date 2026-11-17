@@ -14,6 +14,9 @@ type Project = CollectionEntry<'projects'>;
 /** The real name appears only when permission is true. */
 export const shownName = (p: Project) => (p.data.permission ? p.data.name : p.data.publicName);
 
+/** Real pictures show only with permission: they carry the product's real name. */
+export const shotsFor = (p: Project) => (p.data.permission ? p.data.shots : []);
+
 export const sorted = (ps: Project[]) => [...ps].sort((a, b) => a.data.order - b.data.order);
 
 /** Sample screen rows per layer. Labels only, never real data. */

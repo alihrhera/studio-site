@@ -8,6 +8,13 @@ summary: "A supermarket system: admin panel, point of sale and a customer app on
 role: "The full product: app, API, point of sale and dashboard"
 color: "#e8b695"
 order: 4
+shots:
+  - src: "/work/stores-pos.webp"
+    alt: "The point-of-sale screen of the supermarket system"
+    kind: wide
+  - src: "/work/stores-dashboard.webp"
+    alt: "The dashboard of the supermarket system"
+    kind: wide
 problem: Supermarkets run the shelf, the till and the online channel on three tools that never agree.
 solution: One backend behind an admin panel, a POS terminal and a customer app, with two payment gateways wired in.
 fragment:
