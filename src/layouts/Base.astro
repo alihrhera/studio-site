@@ -3,6 +3,7 @@ import '@fontsource-variable/hanken-grotesk';
 import '@fontsource-variable/cairo';
 import '../styles/tokens.css';
 import '../styles/global.css';
+import { url } from '../data/layers';
 import Wordmark from '../components/Wordmark.astro';
 
 interface Props { title: string; description: string; ink?: 'dark' | 'light' }
@@ -20,13 +21,13 @@ const { title, description } = Astro.props;
   </head>
   <body>
     <header class="nav" id="nav">
-      <a class="nav-mark" href="/" aria-label="Home"><Wordmark /></a>
+      <a class="nav-mark" href={url('')} aria-label="Home"><Wordmark /></a>
       <nav class="nav-links" aria-label="Main">
-        <a href="/work/" aria-current={Astro.url.pathname.startsWith('/work') ? 'page' : undefined}>Work</a>
-        <a href="/#layers">What we cover</a>
-        <a href="/#team">Team</a>
+        <a href={url('work/')} aria-current={Astro.url.pathname.startsWith(url('work')) ? 'page' : undefined}>Work</a>
+        <a href={url('#layers')}>What we cover</a>
+        <a href={url('#team')}>Team</a>
       </nav>
-      <a class="btn" href="/#audit">Book an audit</a>
+      <a class="btn" href={url('#audit')}>Book an audit</a>
     </header>
     <main>
       <slot />

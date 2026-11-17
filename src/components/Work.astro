@@ -1,6 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import { shownName, sorted } from '../data/layers';
+import { shownName, sorted, url } from '../data/layers';
 
 const projects = sorted(await getCollection('projects'));
 ---
@@ -9,7 +9,7 @@ const projects = sorted(await getCollection('projects'));
 </section>
 <div class="work-rows">
   {projects.map((p) => (
-    <a class="work-row reveal" href={`/work/${p.id}/`} style={`--f:${p.data.color}`} data-field={p.data.color} data-ink="#16181d">
+    <a class="work-row reveal" href={url(`work/${p.id}/`)} style={`--f:${p.data.color}`} data-field={p.data.color} data-ink="#16181d">
       <span class="work-row-name">{shownName(p)}</span>
       <span class="work-row-part">{p.data.role}</span>
       <span class="work-row-go">Case study</span>
@@ -17,5 +17,5 @@ const projects = sorted(await getCollection('projects'));
   ))}
 </div>
 <div class="work-foot" data-field="#f2eee6" data-ink="#16181d">
-  <a class="btn reveal" href="/work/">See all work</a>
+  <a class="btn reveal" href={url('work/')}>See all work</a>
 </div>

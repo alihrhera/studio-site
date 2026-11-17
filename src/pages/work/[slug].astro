@@ -4,7 +4,7 @@ import Base from '../../layouts/Base.astro';
 import Screen from '../../components/Screen.astro';
 import Audit from '../../components/Audit.astro';
 import Footer from '../../components/Footer.astro';
-import { layers, samples, shotsFor, shownName, sorted } from '../../data/layers';
+import { layers, samples, shotsFor, shownName, sorted, url } from '../../data/layers';
 
 export async function getStaticPaths() {
   const all = sorted(await getCollection('projects'));
@@ -17,7 +17,7 @@ const label = (id: string) => layers.find((l) => l.id === id)!.label;
 ---
 <Base title={`${name}: case study`} description={p.data.summary}>
   <section class="case-hero" style={`--f:${p.data.color}`} data-field={p.data.color} data-ink="#16181d">
-    <a class="link back" href="/work/">All work</a>
+    <a class="link back" href={url('work/')}>All work</a>
     <h1 class="display reveal">{name}</h1>
     <p class="lead reveal">{p.data.summary}</p>
   </section>
@@ -44,7 +44,7 @@ const label = (id: string) => layers.find((l) => l.id === id)!.label;
       <div class={`case-shots ${shots.filter((s) => s.kind === 'phone').length > 1 ? 'case-shots--phones' : ''}`}>
         {shots.map((s) => (
           <figure class={`shot shot--${s.kind} reveal`}>
-            <img src={s.src} alt={s.alt} loading="lazy" decoding="async" width={s.width} height={s.height} />
+            <img src={url(s.src)} alt={s.alt} loading="lazy" decoding="async" width={s.width} height={s.height} />
           </figure>
         ))}
       </div>
@@ -66,7 +66,7 @@ const label = (id: string) => layers.find((l) => l.id === id)!.label;
     </section>
   )}
 
-  <a class="case-next" href={`/work/${next.id}/`} style={`--f:${next.data.color}`} data-field={next.data.color} data-ink="#16181d">
+  <a class="case-next" href={url(`work/${next.id}/`)} style={`--f:${next.data.color}`} data-field={next.data.color} data-ink="#16181d">
     <span class="head reveal">Next: {shownName(next)}</span>
     <Screen {...next.data.fragment} label={`Sample screen from ${shownName(next)}`} />
   </a>

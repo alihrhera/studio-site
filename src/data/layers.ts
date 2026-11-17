@@ -25,3 +25,6 @@ export const samples: Record<LayerId, [string, string][]> = {
   api: [['GET', '/v1/orders'], ['POST', '/v1/orders'], ['PATCH', '/v1/orders/:id']],
   dashboard: [['Order received', 'Waiting'], ['Packing', 'In progress'], ['Delivered', 'Done']],
 };
+
+// Prefix a site path with the deploy base (GitHub Pages serves under /<repo>/).
+export const url = (p: string) => `${import.meta.env.BASE_URL.replace(/\/$/, '')}/${p.replace(/^\//, '')}`;
