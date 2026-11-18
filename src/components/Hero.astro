@@ -1,30 +1,34 @@
 ---
 import { getCollection } from 'astro:content';
 import { layers, shownName, sorted, url } from '../data/layers';
+import { ui, type Locale } from '../i18n';
+
+const { locale } = Astro.props as { locale: Locale };
+const t = ui[locale];
 
 const projects = sorted(await getCollection('projects'));
-const forLayer = (id: string) => projects.filter((p) => p.data.layers.includes(id as never)).map(shownName);
+const forLayer = (id: string) => projects.filter((p) => p.data.layers.includes(id as never)).map((p) => shownName(p, locale));
 ---
 <section class="hero" data-field="#f2eee6" data-ink="#16181d">
-  <h1 class="hero-title reveal">We ship the whole product.</h1>
+  <h1 class="hero-title reveal">{t.hero.title}</h1>
   <div class="hero-body">
     <div class="hero-copy">
-      <p class="lead reveal">Four engineers across mobile, API and dashboard. The whole product from one squad.</p>
+      <p class="lead reveal">{t.hero.lead}</p>
       <div class="hero-actions reveal">
-        <a class="btn btn--accent" href="mailto:info@pollenbyte.com?subject=Audit%20request">Book a one-week audit</a>
-        <a class="link" href={url('work/')}>See our work</a>
+        <a class="btn btn--accent" href={`mailto:info@pollenbyte.com?subject=${encodeURIComponent(t.audit.subject)}`}>{t.hero.cta}</a>
+        <a class="link" href={url('work/', locale)}>{t.hero.see}</a>
       </div>
-      <ul class="picker reveal" aria-label="Pick a layer to see where we shipped it">
+      <ul class="picker reveal" aria-label={t.hero.pickerAria}>
         {layers.map((l) => (
           <li style={`--c:${l.color}`}>
-            <button type="button" data-layer={l.id} data-note={forLayer(l.id).join(', ')} aria-pressed="false">{l.label}</button>
+            <button type="button" data-layer={l.id} data-note={forLayer(l.id).join(t.sep)} aria-pressed="false">{t.layers[l.id].label}</button>
           </li>
         ))}
       </ul>
-      <p class="picker-note small reveal" id="picker-note" aria-live="polite">Pick a layer to see which products we shipped in it.</p>
+      <p class="picker-note small reveal" id="picker-note" aria-live="polite" data-default={t.hero.pickerNote} data-pre={t.hero.shippedPre}>{t.hero.pickerNote}</p>
     </div>
     <div class="stack" id="stack" data-layers={JSON.stringify(layers.map(({ id, label, color, kind }) => ({ id, label, color, kind })))}>
-      <img class="stack-fallback" src={url('stack-fallback.svg')} width="900" height="760" alt="Three stacked layers: mobile, dashboard and API" />
+      <img class="stack-fallback" src={url('stack-fallback.svg')} width="900" height="760" alt={t.hero.stackAlt} />
     </div>
   </div>
 </section>
@@ -34,6 +38,7 @@ const forLayer = (id: string) => projects.filter((p) => p.data.layers.includes(i
   const host = document.getElementById('stack')!;
   const buttons = [...document.querySelectorAll<HTMLButtonElement>('.picker button')];
   const note = document.getElementById('picker-note')!;
+  const { default: fallback, pre } = note.dataset as { default: string; pre: string };
   let handle: StackHandle | null = null;
   let current: string | null = null;
 
@@ -43,8 +48,8 @@ const forLayer = (id: string) => projects.filter((p) => p.data.layers.includes(i
     host.dataset.selected = id ?? '';
     const b = buttons.find((x) => x.dataset.layer === id);
     note.innerHTML = '';
-    if (b) { const s = document.createElement('strong'); s.textContent = `${b.textContent}: `; note.append(s, `shipped in ${b.dataset.note}.`); }
-    else note.textContent = 'Pick a layer to see which products we shipped in it.';
+    if (b) { const s = document.createElement('strong'); s.textContent = `${b.textContent}: `; note.append(s, `${pre}${b.dataset.note}.`); }
+    else note.textContent = fallback;
     handle?.select(id);
   };
   buttons.forEach((b) => b.addEventListener('click', () => set(current === b.dataset.layer ? null : b.dataset.layer!)));

@@ -1,0 +1,31 @@
+---
+import Base from '../../layouts/Base.astro';
+import Hero from '../../components/Hero.astro';
+import Work from '../../components/Work.astro';
+import Layers from '../../components/Layers.astro';
+import Process from '../../components/Process.astro';
+import Pricing from '../../components/Pricing.astro';
+import Team from '../../components/Team.astro';
+import Audit from '../../components/Audit.astro';
+import Faq from '../../components/Faq.astro';
+import Footer from '../../components/Footer.astro';
+import { ui, type Locale } from '../../i18n';
+
+export const getStaticPaths = () => [
+  { params: { lang: undefined }, props: { locale: 'en' } },
+  { params: { lang: 'ar' }, props: { locale: 'ar' } },
+];
+const { locale } = Astro.props as { locale: Locale };
+const t = ui[locale];
+---
+<Base locale={locale} title={t.home.title} description={t.home.description}>
+  <Hero locale={locale} />
+  <Work locale={locale} />
+  <Layers locale={locale} />
+  <Process locale={locale} />
+  <Pricing locale={locale} />
+  <Team locale={locale} />
+  <Audit locale={locale} />
+  <Faq locale={locale} />
+  <Footer locale={locale} />
+</Base>

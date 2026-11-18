@@ -41,6 +41,8 @@ a { color: inherit; }
 .nav-links { display: flex; gap: 28px; margin-inline-start: auto; }
 .nav-links a { font-weight: 500; }
 .nav-links a:hover { text-decoration: underline; text-underline-offset: 0.25em; }
+.nav-lang { font-weight: 500; }
+.nav-lang:hover { text-decoration: underline; text-underline-offset: 0.25em; }
 .nav .btn { background: var(--nav-ink, var(--ink)); color: var(--nav-field, var(--bg)); transition: background-color 0.3s, color 0.3s, transform 0.2s var(--ease); }
 
 /* Hero */
@@ -135,6 +137,18 @@ a { color: inherit; }
 .stage--3 .tile { block-size: 60vh; }
 .stage-name { font-size: var(--step-lead); font-weight: 500; letter-spacing: -0.02em; }
 
+/* Pricing */
+.pricing { background: var(--surface); padding: var(--section) var(--margin); display: grid; gap: clamp(40px, 6vw, 96px); }
+.pricing-head { display: grid; gap: 32px; }
+.plans { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+.plan { background: var(--f); color: var(--deep); padding: 20px; min-block-size: 48vh; display: flex; flex-direction: column; gap: 20px; }
+.plan h3 { font-size: var(--step-lead); font-weight: 500; letter-spacing: -0.02em; line-height: 1.1; }
+.plan-list { display: grid; gap: 6px; font-weight: 500; }
+.plan-price { margin-block-start: auto; font-weight: 500; display: grid; gap: 4px; }
+.plan-amount { font-size: var(--step-head); line-height: 1; letter-spacing: -0.04em; }
+.pricing-foot { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 24px 32px; }
+.pricing-notes { display: grid; gap: 8px; max-inline-size: 60ch; }
+
 /* Team */
 .team { background: var(--surface-2); padding: var(--section) var(--margin); display: grid; gap: clamp(40px, 6vw, 96px); }
 .people { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
@@ -214,10 +228,18 @@ a { color: inherit; }
   .tiles { grid-template-columns: 1fr; }
   .stage--1 .tile { block-size: 34vw; } .stage--2 .tile { block-size: 46vw; } .stage--3 .tile { block-size: 62vw; }
   .people { grid-template-columns: 1fr 1fr; }
+  .plans { grid-template-columns: 1fr; }
+  .plan { min-block-size: 0; }
   .audit-foot .btn { justify-self: stretch; }
   .facts div { grid-template-columns: 6rem 1fr; }
   .band { row-gap: 12px; padding-block: 32px; }
 }
+
+/* Arabic: joined letters must not be tracked, and the tall script needs more line height. */
+html[dir='rtl'] { --step-display: clamp(2.5rem, 0.5rem + 6.4vw, 6.5rem); --step-head: clamp(2rem, 1rem + 4.2vw, 5rem); }
+html[dir='rtl'] * { letter-spacing: 0; }
+html[dir='rtl'] :is(.head, .display, .hero-title) { line-height: 1.2; }
+html[dir='rtl'] .lead, html[dir='rtl'] .statement { line-height: 1.5; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

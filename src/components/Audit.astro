@@ -1,9 +1,12 @@
 ---
+import { ui, type Locale } from '../i18n';
+const { locale } = Astro.props as { locale: Locale };
+const t = ui[locale].audit;
 ---
 <section id="audit" class="audit" data-field="#16181d" data-ink="#f2eee6">
-  <h2 class="head reveal">Start with one week.</h2>
+  <h2 class="head reveal">{t.head}</h2>
   <div class="audit-foot">
-    <p class="lead reveal">A fixed-price audit of your app, API or dashboard. You get a written report and a plan, and we quote before any work starts.</p>
-    <a class="btn btn--ink reveal" href="mailto:info@pollenbyte.com?subject=Audit%20request">Book the audit</a>
+    <p class="lead reveal">{t.lead}</p>
+    <a class="btn btn--ink reveal" href={`mailto:info@pollenbyte.com?subject=${encodeURIComponent(t.subject)}`}>{t.cta}</a>
   </div>
 </section>

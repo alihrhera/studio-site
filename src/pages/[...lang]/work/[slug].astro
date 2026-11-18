@@ -1,0 +1,79 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import Base from '../../../layouts/Base.astro';
+import Screen from '../../../components/Screen.astro';
+import Audit from '../../../components/Audit.astro';
+import Footer from '../../../components/Footer.astro';
+import { layers, layerLabel, samples, shotsFor, shownName, sorted, text, url } from '../../../data/layers';
+import { ui, type Locale } from '../../../i18n';
+
+export async function getStaticPaths() {
+  const all = sorted(await getCollection('projects'));
+  return (['en', 'ar'] as const).flatMap((locale) =>
+    all.map((p, i) => ({ params: { lang: locale === 'ar' ? 'ar' : undefined, slug: p.id }, props: { locale, p, next: all[(i + 1) % all.length] } })));
+}
+const { locale, p, next } = Astro.props as { locale: Locale; p: CollectionEntry<'projects'>; next: CollectionEntry<'projects'> };
+const t = ui[locale];
+const name = shownName(p, locale);
+const copy = text(p, locale);
+const shots = shotsFor(p, locale);
+---
+<Base locale={locale} title={t.case.title(name)} description={copy.summary}>
+  <section class="case-hero" style={`--f:${p.data.color}`} data-field={p.data.color} data-ink="#16181d">
+    <a class="link back" href={url('work/', locale)}>{t.case.back}</a>
+    <h1 class="display reveal">{name}</h1>
+    <p class="lead reveal">{copy.summary}</p>
+  </section>
+
+  <section class="case-meta" data-field="#f2eee6" data-ink="#16181d">
+    <dl class="facts facts--wide reveal">
+      <div><dt>{t.work.ourPart}</dt><dd>{copy.role}</dd></div>
+      <div><dt>{t.work.layers}</dt><dd>{p.data.layers.map((id) => layerLabel(id, locale)).join(t.sep)}</dd></div>
+      {p.data.period && <div><dt>{t.case.period}</dt><dd>{p.data.period}</dd></div>}
+    </dl>
+  </section>
+
+  <section class="case-block" data-field="#dfd9cb" data-ink="#16181d">
+    <h2 class="head reveal">{t.case.problem}</h2>
+    <p class="statement reveal">{copy.problem}</p>
+  </section>
+
+  <section class="case-solution" style={`--f:${p.data.color}`} data-field={p.data.color} data-ink="#16181d">
+    <div>
+      <h2 class="head reveal">{t.case.built}</h2>
+      <p class="statement reveal">{copy.solution}</p>
+    </div>
+    {shots.length > 0 ? (
+      <div class={`case-shots ${shots.filter((s) => s.kind === 'phone').length > 1 ? 'case-shots--phones' : ''}`}>
+        {shots.map((s) => (
+          <figure class={`shot shot--${s.kind} reveal`}>
+            <img src={url(s.src)} alt={s.alt} loading="lazy" decoding="async" width={s.width} height={s.height} />
+          </figure>
+        ))}
+      </div>
+    ) : (
+      <div class="case-screens">
+        <Screen {...p.data.fragment} label={t.case.sampleFrom(name)} />
+        {p.data.layers.map((id) => {
+          const l = layers.find((x) => x.id === id)!;
+          return <Screen kind={l.kind} title={l.label} rows={samples[id]} label={t.case.sampleLayerFrom(layerLabel(id, locale), name)} />;
+        })}
+      </div>
+    )}
+  </section>
+
+  {copy.result && (
+    <section class="case-block" data-field="#f2eee6" data-ink="#16181d">
+      <h2 class="head reveal">{t.case.result}</h2>
+      <p class="statement reveal">{copy.result}</p>
+    </section>
+  )}
+
+  <a class="case-next" href={url(`work/${next.id}/`, locale)} style={`--f:${next.data.color}`} data-field={next.data.color} data-ink="#16181d">
+    <span class="head reveal">{t.case.next} {shownName(next, locale)}</span>
+    <Screen {...next.data.fragment} label={t.case.sampleFrom(shownName(next, locale))} />
+  </a>
+
+  <Audit locale={locale} />
+  <Footer locale={locale} />
+</Base>

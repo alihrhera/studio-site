@@ -1,23 +1,26 @@
 ---
 import { getCollection } from 'astro:content';
 import { layers, samples, shownName, sorted } from '../data/layers';
+import { ui, type Locale } from '../i18n';
 import Screen from './Screen.astro';
 
+const { locale } = Astro.props as { locale: Locale };
+const t = ui[locale];
 const projects = sorted(await getCollection('projects'));
 ---
 <section id="layers" class="layers-head" data-field="#f2eee6" data-ink="#16181d">
-  <h2 class="head reveal">Three layers. One product. One squad.</h2>
+  <h2 class="head reveal">{t.layersSection.head}</h2>
 </section>
 <div class="sheets">
   {layers.map((l, i) => (
     <article class="sheet" style={`--f:${l.color}; --i:${i}`} data-field={l.color} data-ink="#16181d">
-      <h3 class="sheet-name">{l.label}</h3>
+      <h3 class="sheet-name">{t.layers[l.id].label}</h3>
       <div class="sheet-body">
         <div>
-          <p class="lead">{l.blurb}</p>
-          <p class="small">Shipped in: {projects.filter((p) => p.data.layers.includes(l.id)).map(shownName).join(', ')}</p>
+          <p class="lead">{t.layers[l.id].blurb}</p>
+          <p class="small">{t.layersSection.shipped}{projects.filter((p) => p.data.layers.includes(l.id)).map((p) => shownName(p, locale)).join(t.sep)}</p>
         </div>
-        <Screen kind={l.kind} title={l.label} rows={samples[l.id]} label={`Sample ${l.label} screen`} />
+        <Screen kind={l.kind} title={l.label} rows={samples[l.id]} label={t.case.sample(t.layers[l.id].label)} />
       </div>
     </article>
   ))}

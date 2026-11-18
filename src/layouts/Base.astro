@@ -4,30 +4,39 @@ import '@fontsource-variable/cairo';
 import '../styles/tokens.css';
 import '../styles/global.css';
 import { url } from '../data/layers';
+import { dirOf, otherLocale, ui, type Locale } from '../i18n';
 import Wordmark from '../components/Wordmark.astro';
 
-interface Props { title: string; description: string; ink?: 'dark' | 'light' }
-const { title, description } = Astro.props;
+interface Props { title: string; description: string; locale: Locale }
+const { title, description, locale } = Astro.props;
+const t = ui[locale];
+const other = otherLocale(locale);
+// The same page in the other language: drop the base and any /ar/ prefix, then re-add it.
+const rest = Astro.url.pathname.slice(import.meta.env.BASE_URL.replace(/\/$/, '').length).replace(/^\/(ar(\/|$))?/, '');
+const abs = (l: Locale) => (Astro.site ? new URL(url(rest, l), Astro.site).href : null);
 ---
 
 <!doctype html>
-<html lang="en" dir="ltr">
+<html lang={locale} dir={dirOf(locale)}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    {abs('en') && <><link rel="alternate" hreflang="en" href={abs('en')} /><link rel="alternate" hreflang="ar" href={abs('ar')} /><link rel="alternate" hreflang="x-default" href={abs('en')} /></>}
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Crect width='8' height='8' fill='%23a6cdd3'/%3E%3C/svg%3E" />
   </head>
   <body>
     <header class="nav" id="nav">
-      <a class="nav-mark" href={url('')} aria-label="Home"><Wordmark /></a>
-      <nav class="nav-links" aria-label="Main">
-        <a href={url('work/')} aria-current={Astro.url.pathname.startsWith(url('work')) ? 'page' : undefined}>Work</a>
-        <a href={url('#layers')}>What we cover</a>
-        <a href={url('#team')}>Team</a>
+      <a class="nav-mark" href={url('', locale)} aria-label={t.nav.home}><Wordmark /></a>
+      <nav class="nav-links" aria-label={t.nav.main}>
+        <a href={url('work/', locale)} aria-current={Astro.url.pathname.startsWith(url('work', locale)) ? 'page' : undefined}>{t.nav.work}</a>
+        <a href={url('#layers', locale)}>{t.nav.cover}</a>
+        <a href={url('#pricing', locale)}>{t.nav.pricing}</a>
+        <a href={url('#team', locale)}>{t.nav.team}</a>
       </nav>
-      <a class="btn" href={url('#audit')}>Book an audit</a>
+      <a class="nav-lang" href={url(rest, other)} lang={other} hreflang={other}>{t.switchTo}</a>
+      <a class="btn" href={url('#audit', locale)}>{t.nav.cta}</a>
     </header>
     <main>
       <slot />

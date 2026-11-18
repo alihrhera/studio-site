@@ -1,0 +1,46 @@
+---
+import { audits, launch } from '../data/pricing';
+import { ui, type Locale } from '../i18n';
+const { locale } = Astro.props as { locale: Locale };
+const t = ui[locale].pricing;
+const colors = ['var(--lemon)', 'var(--mint)'];
+const left = launch.total - launch.booked;
+const usd = (n: number) => `$${n.toLocaleString('en-US')}`;
+---
+<section id="pricing" class="pricing" data-field="#e9e4d9" data-ink="#16181d">
+  <div class="pricing-head">
+    <h2 class="head reveal">{t.head}</h2>
+    <p class="lead reveal">{t.lead}</p>
+  </div>
+  <ul class="plans">
+    {audits.map((a, i) => (
+      <li class="plan reveal" style={`--f:${colors[i]}`}>
+        <div>
+          <h3>{t.plans[i].name}</h3>
+          <p class="small">{t.plans[i].tag}</p>
+        </div>
+        <p>{t.plans[i].text}</p>
+        <ul class="plan-list">{t.plans[i].list.map((x) => <li>{x}</li>)}</ul>
+        <div class="plan-price">
+          {left > 0 ? (
+            <>
+              <p class="plan-amount"><bdi dir="ltr">{usd(a.launch)}</bdi></p>
+              <p class="small">{t.launch}</p>
+              <p class="small">{t.regular}: <bdi dir="ltr">{usd(a.regular)}</bdi></p>
+            </>
+          ) : (
+            <p class="plan-amount"><bdi dir="ltr">{usd(a.regular)}</bdi></p>
+          )}
+        </div>
+      </li>
+    ))}
+  </ul>
+  <div class="pricing-foot">
+    <div class="pricing-notes">
+      {left > 0 && <p class="small reveal"><strong>{t.left(left, launch.total)}</strong></p>}
+      <p class="small reveal">{t.call}</p>
+      <p class="small reveal">{t.more}</p>
+    </div>
+    <a class="btn btn--accent reveal" href={`mailto:info@pollenbyte.com?subject=${encodeURIComponent(t.subject)}`}>{t.cta}</a>
+  </div>
+</section>

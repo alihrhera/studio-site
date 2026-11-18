@@ -1,30 +1,35 @@
 ---
 import { getCollection } from 'astro:content';
-import { layers, shotsFor, shownName, sorted, url } from '../data/layers';
+import { layerLabel, shotsFor, shownName, sorted, text, url } from '../data/layers';
+import { ui, type Locale } from '../i18n';
 import Screen from './Screen.astro';
 
+const { locale } = Astro.props as { locale: Locale };
+const t = ui[locale];
 const projects = sorted(await getCollection('projects'));
-const layerLabel = (id: string) => layers.find((l) => l.id === id)!.label;
 ---
-{projects.map((p) => (
+{projects.map((p) => {
+  const shot = shotsFor(p, locale)[0];
+  return (
   <article class="chapter" id={p.id} style={`--f:${p.data.color}`} data-field={p.data.color} data-ink="#16181d">
-    <h2 class="head reveal">{shownName(p)}</h2>
+    <h2 class="head reveal">{shownName(p, locale)}</h2>
     <div class="chapter-body">
       <div class="chapter-text">
-        <p class="lead reveal">{p.data.summary}</p>
+        <p class="lead reveal">{text(p, locale).summary}</p>
         <dl class="facts reveal">
-          <div><dt>Our part</dt><dd>{p.data.role}</dd></div>
-          <div><dt>Layers</dt><dd>{p.data.layers.map(layerLabel).join(', ')}</dd></div>
+          <div><dt>{t.work.ourPart}</dt><dd>{text(p, locale).role}</dd></div>
+          <div><dt>{t.work.layers}</dt><dd>{p.data.layers.map((id) => layerLabel(id, locale)).join(t.sep)}</dd></div>
         </dl>
-        <a class="link reveal" href={url(`work/${p.id}/`)}>Read the case study</a>
+        <a class="link reveal" href={url(`work/${p.id}/`, locale)}>{t.work.read}</a>
       </div>
-      {shotsFor(p)[0] ? (
-        <figure class={`shot shot--${shotsFor(p)[0].kind} shot--chapter reveal`}>
-          <img src={url(shotsFor(p)[0].src)} alt={shotsFor(p)[0].alt} loading="lazy" decoding="async" width={shotsFor(p)[0].width} height={shotsFor(p)[0].height} />
+      {shot ? (
+        <figure class={`shot shot--${shot.kind} shot--chapter reveal`}>
+          <img src={url(shot.src)} alt={shot.alt} loading="lazy" decoding="async" width={shot.width} height={shot.height} />
         </figure>
       ) : (
-        <Screen {...p.data.fragment} label={`Sample screen from ${shownName(p)}`} />
+        <Screen {...p.data.fragment} label={t.case.sampleFrom(shownName(p, locale))} />
       )}
     </div>
   </article>
-))}
+  );
+})}

@@ -1,21 +1,24 @@
 ---
 import { getCollection } from 'astro:content';
-import { shownName, sorted, url, workHeading } from '../data/layers';
+import { shownName, sorted, text, url } from '../data/layers';
+import { ui, type Locale } from '../i18n';
 
+const { locale } = Astro.props as { locale: Locale };
+const t = ui[locale];
 const projects = sorted(await getCollection('projects'));
 ---
 <section id="work" class="work-head" data-field="#f2eee6" data-ink="#16181d">
-  <h2 class="head reveal">{workHeading(projects.length)}</h2>
+  <h2 class="head reveal">{t.workHeading(projects.length)}</h2>
 </section>
 <div class="work-rows">
   {projects.map((p) => (
-    <a class="work-row reveal" href={url(`work/${p.id}/`)} style={`--f:${p.data.color}`} data-field={p.data.color} data-ink="#16181d">
-      <span class="work-row-name">{shownName(p)}</span>
-      <span class="work-row-part">{p.data.role}</span>
-      <span class="work-row-go">Case study</span>
+    <a class="work-row reveal" href={url(`work/${p.id}/`, locale)} style={`--f:${p.data.color}`} data-field={p.data.color} data-ink="#16181d">
+      <span class="work-row-name">{shownName(p, locale)}</span>
+      <span class="work-row-part">{text(p, locale).role}</span>
+      <span class="work-row-go">{t.work.caseStudy}</span>
     </a>
   ))}
 </div>
 <div class="work-foot" data-field="#f2eee6" data-ink="#16181d">
-  <a class="btn reveal" href={url('work/')}>See all work</a>
+  <a class="btn reveal" href={url('work/', locale)}>{t.work.all}</a>
 </div>

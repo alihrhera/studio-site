@@ -10,6 +10,13 @@ color: "#bcc4e4"
 order: 2
 problem: Courses, students and progress lived in separate tools, so nobody had one view of a learner.
 solution: A teacher dashboard and a mobile app for students, both on one shared API.
+ar:
+  publicName: "Teacho"
+  summary: "منصة تعليمية بلوحة تحكم ويب للمعلمين وتطبيق موبايل للطلاب."
+  role: "تطبيق موبايل وواجهة API ولوحة تحكم"
+  problem: "كانت الدورات والطلاب والتقدّم في أدوات منفصلة، فلا توجد صورة واحدة عن كل متعلّم."
+  solution: "لوحة تحكم للمعلمين وتطبيق موبايل للطلاب، وكلاهما يعمل على واجهة API واحدة مشتركة."
+  alts: []
 fragment:
   kind: phone
   title: My courses

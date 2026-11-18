@@ -1,34 +1,40 @@
 import type { CollectionEntry } from 'astro:content';
+import { ui, type Locale } from '../i18n';
 
 export type LayerId = 'mobile' | 'api' | 'dashboard';
 
 // Three layers of one product. Named by what they do, never by framework.
-export const layers: { id: LayerId; label: string; color: string; blurb: string; kind: 'phone' | 'dashboard' | 'pos' }[] = [
-  { id: 'mobile', label: 'Mobile', color: '#b6cfae', kind: 'phone', blurb: 'Apps for iOS and Android. Offline-first, secure by default, with screens you can change without a store release.' },
-  { id: 'api', label: 'API', color: '#e9d9a1', kind: 'dashboard', blurb: 'The backend behind it all: auth, payments, queues, push notifications and more than one language.' },
-  { id: 'dashboard', label: 'Dashboard', color: '#bcc4e4', kind: 'dashboard', blurb: 'The admin panel your team runs the business from: orders, catalogue, content, roles.' },
+// `label` is English on purpose: it is drawn into the 3D picture. Page text uses ui[locale].layers.
+export const layers: { id: LayerId; label: string; color: string; kind: 'phone' | 'dashboard' | 'pos' }[] = [
+  { id: 'mobile', label: 'Mobile', color: '#b6cfae', kind: 'phone' },
+  { id: 'api', label: 'API', color: '#e9d9a1', kind: 'dashboard' },
+  { id: 'dashboard', label: 'Dashboard', color: '#bcc4e4', kind: 'dashboard' },
 ];
 
 type Project = CollectionEntry<'projects'>;
 
 /** The real name appears only when permission is true. */
-export const shownName = (p: Project) => (p.data.permission ? p.data.name : p.data.publicName);
+export const shownName = (p: Project, l: Locale = 'en') =>
+  p.data.permission ? p.data.name : l === 'ar' ? p.data.ar.publicName : p.data.publicName;
+
+/** Project copy in the page language. */
+export const text = (p: Project, l: Locale) => (l === 'ar' ? { ...p.data, ...p.data.ar } : p.data);
 
 /** Real pictures show only with permission: they carry the product's real name. */
-export const shotsFor = (p: Project) => (p.data.permission ? p.data.shots : []);
+export const shotsFor = (p: Project, l: Locale = 'en') =>
+  p.data.permission ? p.data.shots.map((s, i) => ({ ...s, alt: (l === 'ar' && p.data.ar.alts[i]) || s.alt })) : [];
 
 export const sorted = (ps: Project[]) => [...ps].sort((a, b) => a.data.order - b.data.order);
 
-/** Sample screen rows per layer. Labels only, never real data. */
+/** Sample screen rows per layer. English on purpose: they are pictures of an app, not page text. */
 export const samples: Record<LayerId, [string, string][]> = {
   mobile: [['09:30', 'Check-up'], ['10:15', 'Follow-up'], ['11:00', 'New patient']],
   api: [['GET', '/v1/orders'], ['POST', '/v1/orders'], ['PATCH', '/v1/orders/:id']],
   dashboard: [['Order received', 'Waiting'], ['Packing', 'In progress'], ['Delivered', 'Done']],
 };
 
-// Prefix a site path with the deploy base (GitHub Pages serves under /<repo>/).
-export const url = (p: string) => `${import.meta.env.BASE_URL.replace(/\/$/, '')}/${p.replace(/^\//, '')}`;
+// Prefix a site path with the deploy base (GitHub Pages serves under /<repo>/) and the language.
+export const url = (p: string, l: Locale = 'en') =>
+  `${import.meta.env.BASE_URL.replace(/\/$/, '')}${l === 'ar' ? '/ar' : ''}/${p.replace(/^\//, '')}`;
 
-const WORDS = ['No', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve'];
-/** "Nine products, our part in each." follows the real project count. */
-export const workHeading = (n: number) => `${WORDS[n] ?? n} products, our part in each.`;
+export const layerLabel = (id: string, l: Locale) => ui[l].layers[id as LayerId].label;

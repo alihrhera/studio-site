@@ -1,21 +1,25 @@
 ---
 import { url } from '../data/layers';
+import { ui, type Locale } from '../i18n';
 import Wordmark from './Wordmark.astro';
+const { locale } = Astro.props as { locale: Locale };
+const t = ui[locale];
 ---
 <footer class="footer" data-field="#16181d" data-ink="#f2eee6">
   <div class="footer-top">
     <div class="footer-places">
       <a href="mailto:info@pollenbyte.com">info@pollenbyte.com</a>
-      <p>Egypt, working remotely with Europe and the Gulf</p>
+      <p>{t.footer.places}</p>
     </div>
     <nav class="footer-links" aria-label="Footer">
-      <a href={url('work/')}>Work</a>
-      <a href={url('#layers')}>What we cover</a>
-      <a href={url('#process')}>How we work</a>
-      <a href={url('#team')}>Team</a>
-      <a href={url('#faq')}>Questions</a>
+      <a href={url('work/', locale)}>{t.nav.work}</a>
+      <a href={url('#layers', locale)}>{t.nav.cover}</a>
+      <a href={url('#process', locale)}>{t.footer.how}</a>
+      <a href={url('#pricing', locale)}>{t.nav.pricing}</a>
+      <a href={url('#team', locale)}>{t.nav.team}</a>
+      <a href={url('#faq', locale)}>{t.footer.questions}</a>
     </nav>
   </div>
-  <div class="footer-legal"><span>© 2026 Studio</span><a href="#nav">Back to top</a></div>
-  <div class="footer-name" aria-hidden="true"><Wordmark /></div>
+  <div class="footer-legal"><span>{t.footer.legal}</span><a href="#nav">{t.footer.top}</a></div>
+  <div class="footer-name" aria-hidden="true" dir="ltr"><Wordmark /></div>
 </footer>

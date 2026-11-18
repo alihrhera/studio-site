@@ -17,6 +17,13 @@ shots:
     kind: wide
 problem: Supermarkets run the shelf, the till and the online channel on three tools that never agree.
 solution: One backend behind an admin panel, a POS terminal and a customer app, with two payment gateways wired in.
+ar:
+  publicName: "نظام إدارة سوبر ماركت"
+  summary: "نظام سوبر ماركت: لوحة إدارة ونقطة بيع وتطبيق للعملاء على خلفية واحدة."
+  role: "المنتج كاملًا: التطبيق والـ API ونقطة البيع ولوحة التحكم"
+  problem: "السوبر ماركت يدير الرف والكاشير والبيع أونلاين بثلاث أدوات لا تتفق أبدًا."
+  solution: "خلفية واحدة تقف وراء لوحة إدارة ونقطة بيع وتطبيق للعملاء، مع ربط بوابتي دفع."
+  alts: ["شاشة نقطة البيع في نظام السوبر ماركت", "لوحة تحكم نظام السوبر ماركت"]
 fragment:
   kind: pos
   title: New sale

@@ -19,6 +19,13 @@ shots:
     height: 1487
 problem: A solo doctor ran appointments, records and prescriptions across paper and chat messages.
 solution: A native mobile app with its own API behind it. One doctor per install today, built so a secretary's account can sync with it next.
+ar:
+  publicName: "Kashf"
+  summary: "تطبيق عيادة يجمع يوم الطبيب ومرضاه وروشتاته في مكان واحد."
+  role: "تطبيق موبايل وواجهة API"
+  problem: "طبيب يعمل بمفرده كان يدير المواعيد والسجلات والروشتات بين الورق ورسائل المحادثة."
+  solution: "تطبيق موبايل أصلي تقف خلفه واجهة API خاصة به. طبيب واحد لكل نسخة حاليًا، ومبني بحيث يمكن لحساب السكرتيرة أن يتزامن معه لاحقًا."
+  alts: ["موقع Kashf مع نموذج من تطبيق الطبيب", "نموذج مريض جديد في تطبيق Kashf للطبيب"]
 fragment:
   kind: phone
   title: Today

@@ -1,11 +1,10 @@
-node_modules
-dist
-.astro
-.superpowers
-.taste-skill/inspect
-.taste-skill/before
-.taste-skill/after
-.claude
-.taste-skill
-PLAN.md
-docs
+# Public repo: only site files are tracked. Plans, pricing and tool output stay local in _private/ (or anywhere else).
+/*
+!/src/
+!/public/
+!/scripts/
+!/.github/
+!/.gitignore
+!/astro.config.mjs
+!/package.json
+!/package-lock.json

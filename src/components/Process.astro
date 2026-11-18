@@ -1,16 +1,15 @@
 ---
-const stages = [
-  { name: 'Audit', color: 'var(--lemon)', text: 'One week on your app, API or dashboard. You get a written report and a fixed quote.', list: ['Findings report', 'Fixed price', 'Roadmap'] },
-  { name: 'Build', color: 'var(--mint)', text: 'A working build you can open on your phone, shown to you every week.', list: ['Weekly demo', 'Staging build', 'Shared repository'] },
-  { name: 'Hand over', color: 'var(--cornflower)', text: 'Store releases, documentation and a session with your team. The code is yours.', list: ['Store releases', 'Documentation', 'Handover session'] },
-];
+import { ui, type Locale } from '../i18n';
+const { locale } = Astro.props as { locale: Locale };
+const t = ui[locale].process;
+const colors = ['var(--lemon)', 'var(--mint)', 'var(--cornflower)'];
 ---
 <section id="process" class="process" data-field="#f2eee6" data-ink="#16181d">
-  <h2 class="head reveal">Small steps, each one you can see.</h2>
+  <h2 class="head reveal">{t.head}</h2>
   <div class="tiles">
-    {stages.map((s, i) => (
+    {t.stages.map((s, i) => (
       <div class={`stage stage--${i + 1}`}>
-        <div class="tile reveal" style={`--f:${s.color}`}>
+        <div class="tile reveal" style={`--f:${colors[i]}`}>
           <ul>{s.list.map((x) => <li>{x}</li>)}</ul>
         </div>
         <h3 class="stage-name reveal">{s.name}</h3>

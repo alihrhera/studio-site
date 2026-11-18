@@ -1,22 +1,19 @@
 ---
 import { layers } from '../data/layers';
-const people = [
-  { role: 'Mobile engineer', layer: 'mobile', text: 'Native apps, offline-first and secure.' },
-  { role: 'Mobile engineer', layer: 'mobile', text: 'One codebase for iOS and Android, screens that change without a store release.' },
-  { role: 'Backend engineer', layer: 'api', text: 'APIs, payments, queues and data.' },
-  { role: 'Frontend engineer', layer: 'dashboard', text: 'The admin dashboards and the web.' },
-];
+import { ui, type Locale } from '../i18n';
+const { locale } = Astro.props as { locale: Locale };
+const t = ui[locale].team;
 const color = (id: string) => layers.find((l) => l.id === id)!.color;
 ---
 <section id="team" class="team" data-field="#dfd9cb" data-ink="#16181d">
-  <h2 class="head reveal">Four engineers, one squad.</h2>
+  <h2 class="head reveal">{t.head}</h2>
   <ul class="people">
-    {people.map((p) => (
+    {t.people.map((p) => (
       <li class="person reveal" style={`--f:${color(p.layer)}`}>
         <h3>{p.role}</h3>
         <p>{p.text}</p>
       </li>
     ))}
   </ul>
-  <p class="statement reveal">Remote from Egypt. We work in English or Arabic with your team.</p>
+  <p class="statement reveal">{t.statement}</p>
 </section>

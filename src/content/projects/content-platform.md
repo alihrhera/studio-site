@@ -18,6 +18,13 @@ shots:
     kind: wide
 problem: Editors needed to publish reels, jobs and news from one place without a developer.
 solution: A dashboard and API for reels, job posts and news, with an editorial workflow.
+ar:
+  publicName: "منصة محتوى ووظائف"
+  summary: "لوحة تحكم تدير الفيديوهات القصيرة والوظائف والأخبار لمنتج محتوى."
+  role: "الخلفية ولوحة التحكم"
+  problem: "احتاج المحررون إلى نشر الفيديوهات القصيرة والوظائف والأخبار من مكان واحد دون مطوّر."
+  solution: "لوحة تحكم وواجهة API للفيديوهات القصيرة والوظائف والأخبار، مع سير عمل تحريري."
+  alts: ["لوحة إدارة منصة المحتوى والوظائف", "شاشة تسجيل الدخول لإدارة المنصة"]
 fragment:
   kind: dashboard
   title: Content
