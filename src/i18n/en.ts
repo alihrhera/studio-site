@@ -6,7 +6,7 @@ export const en = {
   langName: 'English',
   switchTo: 'العربية',
   nav: { home: 'Home', main: 'Main', work: 'Work', cover: 'What we cover', pricing: 'Pricing', team: 'Team', cta: 'Book an audit' },
-  home: { title: 'A product squad for apps, APIs and dashboards', description: 'Four engineers who ship the whole product: mobile app, API and dashboard.' },
+  home: { title: 'A product squad for apps, APIs and dashboards', description: 'We ship the whole product: mobile app, API and dashboard.' },
   layers: {
     mobile: { label: 'Mobile', blurb: 'Apps for iOS and Android. Offline-first, secure by default, with screens you can change without a store release.' },
     api: { label: 'API', blurb: 'The backend behind it all: auth, payments, queues, push notifications and more than one language.' },
@@ -14,7 +14,7 @@ export const en = {
   },
   hero: {
     title: 'We ship the whole product.',
-    lead: 'Four engineers across mobile, API and dashboard. The whole product from one squad.',
+    lead: 'Mobile, API and dashboard from one team. The whole product, end to end.',
     cta: 'Book a one-week audit',
     see: 'See our work',
     pickerAria: 'Pick a layer to see where we shipped it',
@@ -48,8 +48,8 @@ export const en = {
     head: 'Audit prices, in the open.',
     lead: 'Choose one layer or the whole product. One fixed price, paid upfront, and credited to your first project if you sign within 30 days.',
     plans: [
-      { name: 'Focus', tag: 'One layer: app, API or dashboard', text: 'One engineer, five working days.', list: ['Written findings report', 'A plan, in order of priority', 'A fixed quote for the work'] },
-      { name: 'Full', tag: 'All three layers', text: 'Two engineers, five working days.', list: ['Written findings report', 'A plan, in order of priority', 'A fixed quote for the work'] },
+      { name: 'Focus', tag: 'One layer: app, API or dashboard', text: 'Five working days.', list: ['Written findings report', 'A plan, in order of priority', 'A fixed quote for the work'] },
+      { name: 'Full', tag: 'All three layers', text: 'Five working days.', list: ['Written findings report', 'A plan, in order of priority', 'A fixed quote for the work'] },
     ],
     launch: 'Launch price, first 10 audits',
     regular: 'Regular price',
@@ -60,14 +60,14 @@ export const en = {
     subject: 'Audit request',
   },
   team: {
-    head: 'Four engineers, one squad.',
+    head: 'One team, every layer.',
     people: [
-      { role: 'Mobile engineer', layer: 'mobile', text: 'Native apps, offline-first and secure.' },
-      { role: 'Mobile engineer', layer: 'mobile', text: 'One codebase for iOS and Android, screens that change without a store release.' },
-      { role: 'Backend engineer', layer: 'api', text: 'APIs, payments, queues and data.' },
-      { role: 'Frontend engineer', layer: 'dashboard', text: 'The admin dashboards and the web.' },
+      { role: 'Native mobile', layer: 'mobile', text: 'Native apps, offline-first and secure.' },
+      { role: 'Cross-platform mobile', layer: 'mobile', text: 'One codebase for iOS and Android, screens that change without a store release.' },
+      { role: 'Backend', layer: 'api', text: 'APIs, payments, queues and data.' },
+      { role: 'Web and dashboards', layer: 'dashboard', text: 'The admin dashboards and the web.' },
     ],
-    statement: 'Remote from Egypt. We work in English or Arabic with your team.',
+    statement: 'We work remotely, with clients anywhere in the world, in English or Arabic.',
   },
   audit: {
     head: 'Start with one week.',
@@ -78,15 +78,15 @@ export const en = {
   faq: {
     head: 'Questions we hear first.',
     qa: [
-      ['Who are you?', 'Four engineers: two on mobile, one on the API, one on the dashboard. We build the app, the API and the dashboard together, so nothing gets lost between teams.'],
+      ['Who are you?', 'A small team of engineers across mobile, the API and the dashboard. We build the app, the API and the dashboard together, so nothing gets lost between teams.'],
       ['What does the audit cost?', 'A Focus audit (one layer) is $1,200 and a Full audit (all three layers) is $2,400. The first ten audits are at launch prices of $900 and $1,900. You pay upfront, and the whole amount is credited to your first project if you sign within 30 days.'],
-      ['Where are you based?', 'Remote, from Egypt. We work in English or Arabic and overlap with your working hours in Europe or the Gulf.'],
+      ['Where do you work?', 'Remotely, with clients anywhere in the world. We work in English or Arabic and overlap with your working hours.'],
       ['Can I see your code?', 'The case studies show what we built and which part was ours. Under an NDA we can walk you through the code itself.'],
       ['Who owns the code?', 'You do. Ownership passes to you at delivery and is written into the contract.'],
     ] as [string, string][],
   },
   footer: {
-    places: 'Egypt, working remotely with Europe and the Gulf', questions: 'Questions', how: 'How we work', top: 'Back to top', legal: '© 2026 Studio',
+    places: 'Working remotely, with clients anywhere in the world', questions: 'Questions', how: 'How we work', top: 'Back to top', legal: '© 2026 Studio',
   },
 };
 
