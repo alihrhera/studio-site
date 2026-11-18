@@ -28,3 +28,7 @@ export const samples: Record<LayerId, [string, string][]> = {
 
 // Prefix a site path with the deploy base (GitHub Pages serves under /<repo>/).
 export const url = (p: string) => `${import.meta.env.BASE_URL.replace(/\/$/, '')}/${p.replace(/^\//, '')}`;
+
+const WORDS = ['No', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve'];
+/** "Nine products, our part in each." follows the real project count. */
+export const workHeading = (n: number) => `${WORDS[n] ?? n} products, our part in each.`;

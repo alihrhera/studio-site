@@ -1,11 +1,11 @@
 ---
 import { getCollection } from 'astro:content';
-import { shownName, sorted, url } from '../data/layers';
+import { shownName, sorted, url, workHeading } from '../data/layers';
 
 const projects = sorted(await getCollection('projects'));
 ---
 <section id="work" class="work-head" data-field="#f2eee6" data-ink="#16181d">
-  <h2 class="head reveal">Six products, our part in each.</h2>
+  <h2 class="head reveal">{workHeading(projects.length)}</h2>
 </section>
 <div class="work-rows">
   {projects.map((p) => (
