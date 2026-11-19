@@ -86,7 +86,7 @@ export const en = {
     ] as [string, string][],
   },
   footer: {
-    places: 'Working remotely, with clients anywhere in the world', questions: 'Questions', how: 'How we work', top: 'Back to top', legal: '© 2026 Studio',
+    places: 'Working remotely, with clients anywhere in the world', questions: 'Questions', how: 'How we work', top: 'Back to top', legal: '© 2026 PollenByte', tagline: 'From the engineering of nature to the engineering of software.',
   },
 };
 

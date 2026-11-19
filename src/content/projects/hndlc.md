@@ -26,13 +26,28 @@ shots:
     kind: phone
     width: 720
     height: 1607
+  - src: "/work/hndlc-provider-1.webp"
+    alt: "The provider app login screen with phone and password"
+    kind: phone
+    width: 720
+    height: 1478
+  - src: "/work/hndlc-provider-2.webp"
+    alt: "The provider app wallet: available balance and withdraw button"
+    kind: phone
+    width: 720
+    height: 1478
+  - src: "/work/hndlc-provider-3.webp"
+    alt: "The provider app profile menu: info, certificates, services, history and wallet"
+    kind: phone
+    width: 720
+    height: 1478
 ar:
   publicName: "Hndlc"
   summary: "تطبيق رعاية صحية يربط المرضى بالممرضين والأطباء والصيدليات والمعامل والعيادات."
   role: "تطبيقان للموبايل وواجهة API ولوحة تحكم"
   problem: "كان العثور على مقدّم رعاية وإرسال الطلب ومتابعته يتم عبر المكالمات والرسائل، دون سجل مشترك."
   solution: "تطبيق للمريض وتطبيق منفصل لمقدّمي الرعاية على واجهة API واحدة، بالعربية والإنجليزية، مع لوحة تحكم يدير منها الفريق المقدّمين والطلبات والكوبونات والسحوبات."
-  alts: ["الشاشة الرئيسية لتطبيق المريض: البحث ولافتة التمريض وقسما التمريض والأطباء", "شاشة الترحيب في تطبيق المريض: كل رعايتك في مكان واحد", "شاشة تسجيل الدخول في تطبيق المريض برقم الموبايل وكلمة المرور"]
+  alts: ["الشاشة الرئيسية لتطبيق المريض: البحث ولافتة التمريض وقسما التمريض والأطباء", "شاشة الترحيب في تطبيق المريض: كل رعايتك في مكان واحد", "شاشة تسجيل الدخول في تطبيق المريض برقم الموبايل وكلمة المرور", "شاشة تسجيل الدخول في تطبيق مقدّم الرعاية", "محفظة تطبيق مقدّم الرعاية: الرصيد المتاح وزر السحب", "قائمة الملف الشخصي في تطبيق مقدّم الرعاية: البيانات والشهادات والخدمات والسجل والمحفظة"]
 fragment:
   kind: phone
   title: Book a visit

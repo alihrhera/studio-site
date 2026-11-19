@@ -37,7 +37,8 @@ a { color: inherit; }
   padding: 16px var(--margin); color: var(--nav-ink, var(--ink)); transition: color 0.3s;
 }
 .nav a { text-decoration: none; }
-.wordmark { font-weight: 500; font-size: var(--step-lead); letter-spacing: -0.04em; }
+.wordmark { display: inline-flex; align-items: center; gap: 0.3em; font-weight: 600; font-size: var(--step-lead); letter-spacing: -0.04em; }
+.wordmark-mark { inline-size: 1.5em; block-size: 1.5em; flex: none; }
 .nav-links { display: flex; gap: 28px; margin-inline-start: auto; }
 .nav-links a { font-weight: 500; }
 .nav-links a:hover { text-decoration: underline; text-underline-offset: 0.25em; }
@@ -179,7 +180,7 @@ a { color: inherit; }
 .footer-links a { text-decoration: none; }
 .footer-links a:hover { text-decoration: underline; text-underline-offset: 0.25em; }
 .footer-legal { display: flex; justify-content: space-between; font-size: var(--step-small); }
-.footer-name { font-size: 24vw; font-weight: 500; line-height: 0.8; letter-spacing: -0.06em; white-space: nowrap; margin-block-end: -0.13em; user-select: none; }
+.footer-name { font-size: 17vw; font-weight: 600; line-height: 0.8; letter-spacing: -0.06em; white-space: nowrap; margin-block-end: -0.13em; user-select: none; }
 
 /* Case study */
 .case-hero { background: var(--f); color: var(--deep); min-block-size: 78svh; padding: 140px var(--margin) clamp(40px, 5vw, 80px); display: flex; flex-direction: column; justify-content: flex-end; gap: 32px; }

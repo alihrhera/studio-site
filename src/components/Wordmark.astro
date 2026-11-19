@@ -1,4 +1,18 @@
 ---
-// Placeholder until the studio name is decided: change it here only.
+// PollenByte logo: three honeycomb cells (app, API, dashboard), the top one pollen-gold.
+// Change the name or mark here only. `mark={false}` gives the name alone (the big footer name).
+const { mark = true } = Astro.props;
+const R = 21, w = Math.sqrt(3) * R, h = (cx: number, cy: number) =>
+  [0, 1, 2, 3, 4, 5].map((i) => { const a = (Math.PI / 3) * i - Math.PI / 2; return `${(cx + R * Math.cos(a)).toFixed(2)},${(cy + R * Math.sin(a)).toFixed(2)}`; }).join(' ');
+const cells = [h(50, 36), h(50 - w / 2 - 1.2, 36 + 1.5 * R + 1.2), h(50 + w / 2 + 1.2, 36 + 1.5 * R + 1.2)];
 ---
-<span class="wordmark">Studio</span>
+<span class="wordmark" dir="ltr">
+  {mark && (
+    <svg class="wordmark-mark" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+      <polygon points={cells[0]} fill="var(--honey)" />
+      <polygon points={cells[1]} fill="currentColor" />
+      <polygon points={cells[2]} fill="currentColor" />
+    </svg>
+  )}
+  <span>PollenByte</span>
+</span>

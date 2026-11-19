@@ -23,8 +23,23 @@ const abs = (l: Locale) => (Astro.site ? new URL(url(rest, l), Astro.site).href 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    {abs('en') && <><link rel="alternate" hreflang="en" href={abs('en')} /><link rel="alternate" hreflang="ar" href={abs('ar')} /><link rel="alternate" hreflang="x-default" href={abs('en')} /></>}
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Crect width='8' height='8' fill='%23a6cdd3'/%3E%3C/svg%3E" />
+    {abs('en') && <>
+      <link rel="canonical" href={abs(locale)} />
+      <link rel="alternate" hreflang="en" href={abs('en')} /><link rel="alternate" hreflang="ar" href={abs('ar')} /><link rel="alternate" hreflang="x-default" href={abs('en')} />
+      <meta property="og:type" content="website" />
+      <meta property="og:site_name" content="PollenByte" />
+      <meta property="og:title" content={title} />
+      <meta property="og:description" content={description} />
+      <meta property="og:url" content={abs(locale)} />
+      <meta property="og:locale" content={locale === 'ar' ? 'ar_AR' : 'en_US'} />
+      <meta property="og:image" content={new URL(url('og.png'), Astro.site).href} />
+      <meta property="og:image:width" content="1200" /><meta property="og:image:height" content="630" />
+      <meta property="og:image:alt" content={t.hero.stackAlt} />
+      <meta name="twitter:card" content="summary_large_image" />
+      <script type="application/ld+json" set:html={JSON.stringify({ '@context': 'https://schema.org', '@type': 'WebPage', name: title, description, url: abs(locale), inLanguage: locale, isPartOf: { '@type': 'WebSite', name: 'PollenByte', url: new URL(url('', 'en'), Astro.site).href } })} />
+    </>}
+    <link rel="icon" type="image/svg+xml" href={url('favicon.svg')} />
+    <link rel="apple-touch-icon" href={url('apple-touch-icon.png')} />
   </head>
   <body>
     <header class="nav" id="nav">

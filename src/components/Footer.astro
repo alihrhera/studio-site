@@ -10,6 +10,7 @@ const t = ui[locale];
     <div class="footer-places">
       <a href="mailto:info@pollenbyte.com">info@pollenbyte.com</a>
       <p>{t.footer.places}</p>
+      <p>{t.footer.tagline}</p>
     </div>
     <nav class="footer-links" aria-label="Footer">
       <a href={url('work/', locale)}>{t.nav.work}</a>
@@ -21,5 +22,5 @@ const t = ui[locale];
     </nav>
   </div>
   <div class="footer-legal"><span>{t.footer.legal}</span><a href="#nav">{t.footer.top}</a></div>
-  <div class="footer-name" aria-hidden="true" dir="ltr"><Wordmark /></div>
+  <div class="footer-name" aria-hidden="true" dir="ltr"><Wordmark mark={false} /></div>
 </footer>
