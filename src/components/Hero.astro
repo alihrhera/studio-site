@@ -28,7 +28,7 @@ const forLayer = (id: string) => projects.filter((p) => p.data.layers.includes(i
       <p class="picker-note small reveal" id="picker-note" aria-live="polite" data-default={t.hero.pickerNote} data-pre={t.hero.shippedPre}>{t.hero.pickerNote}</p>
     </div>
     <div class="stack" id="stack" data-layers={JSON.stringify(layers.map(({ id, label, color, kind }) => ({ id, label, color, kind })))}>
-      <img class="stack-fallback" src={url('stack-fallback.svg')} width="900" height="760" alt={t.hero.stackAlt} />
+      <img class="stack-fallback" src={url('stack-fallback.svg')} width="900" height="760" alt={t.hero.stackAlt} fetchpriority="high" />
     </div>
   </div>
 </section>
@@ -65,5 +65,8 @@ const forLayer = (id: string) => projects.filter((p) => p.data.layers.includes(i
       if (current) handle?.select(current);
     } catch { /* the static fallback stays */ }
   }, { rootMargin: '200px' });
-  io.observe(host);
+  // Arm after load so the three.js bundle stays off the critical path (LCP is the static image).
+  const arm = () => setTimeout(() => io.observe(host), 1200);
+  if (document.readyState === 'complete') arm(); else addEventListener('load', arm, { once: true });
 </script>
+
