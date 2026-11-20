@@ -1,7 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 760" role="img" aria-label="Three stacked layers">
-  <g font-family="Hanken Grotesk Variable, system-ui, sans-serif" font-size="30" font-weight="500">
-    <g transform="translate(450 110)"><path d="M0 0l330 130-330 130-330-130z" fill="#b6cfae"/><path d="M-330 130v40l330 130v-40z" fill="#71806c"/><path d="M0 260v40l330-130v-40z" fill="#8ea188"/><text x="-120" y="140" transform="skewY(21)" fill="#16181d">Mobile</text></g>
-    <g transform="translate(450 250)"><path d="M0 0l330 130-330 130-330-130z" fill="#bcc4e4"/><path d="M-330 130v40l330 130v-40z" fill="#757a8d"/><path d="M0 260v40l330-130v-40z" fill="#9399b2"/><text x="-120" y="140" transform="skewY(21)" fill="#16181d">Dashboard</text></g>
-    <g transform="translate(450 390)"><path d="M0 0l330 130-330 130-330-130z" fill="#e9d9a1"/><path d="M-330 130v40l330 130v-40z" fill="#908764"/><path d="M0 260v40l330-130v-40z" fill="#b6a97e"/><text x="-120" y="140" transform="skewY(21)" fill="#16181d">API</text></g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 50 724 570" role="img" aria-label="Three stacked layers">
+  <g>
+    <path d="M36 372L299 262L716 412L463 565z" fill="#e9d9a1"/>
+    <path d="M36 372L463 565v25L36 397z" fill="#bcaf81"/>
+    <path d="M463 565L716 412v25L463 590z" fill="#bcaf81"/>
+  </g>
+  <g>
+    <path d="M29 277L292 167L709 317L456 470z" fill="#bcc4e4"/>
+    <path d="M29 277L456 470v25L29 302z" fill="#989eb8"/>
+    <path d="M456 470L709 317v25L456 495z" fill="#989eb8"/>
+  </g>
+  <g>
+    <path d="M22 182L285 72L702 222L449 375z" fill="#b6cfae"/>
+    <path d="M22 182L449 375v25L22 207z" fill="#93a78c"/>
+    <path d="M449 375L702 222v25L449 400z" fill="#93a78c"/>
   </g>
 </svg>

@@ -28,7 +28,7 @@ const forLayer = (id: string) => projects.filter((p) => p.data.layers.includes(i
       <p class="picker-note small reveal" id="picker-note" aria-live="polite" data-default={t.hero.pickerNote} data-pre={t.hero.shippedPre}>{t.hero.pickerNote}</p>
     </div>
     <div class="stack" id="stack" data-layers={JSON.stringify(layers.map(({ id, label, color, kind }) => ({ id, label, color, kind })))}>
-      <img class="stack-fallback" src={url('stack-fallback.svg')} width="900" height="760" alt={t.hero.stackAlt} fetchpriority="high" />
+      <img class="stack-fallback" src={url('stack-fallback.svg')} width="724" height="570" alt={t.hero.stackAlt} fetchpriority="high" />
     </div>
   </div>
 </section>
