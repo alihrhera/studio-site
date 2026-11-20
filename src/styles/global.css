@@ -141,7 +141,7 @@ a { color: inherit; }
 /* Pricing */
 .pricing { background: var(--surface); padding: var(--section) var(--margin); display: grid; gap: clamp(40px, 6vw, 96px); }
 .pricing-head { display: grid; gap: 32px; }
-.plans { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+.plans { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
 .plan { background: var(--f); color: var(--deep); padding: 20px; min-block-size: 48vh; display: flex; flex-direction: column; gap: 20px; }
 .plan h3 { font-size: var(--step-lead); font-weight: 500; letter-spacing: -0.02em; line-height: 1.1; }
 .plan-list { display: grid; gap: 6px; font-weight: 500; }

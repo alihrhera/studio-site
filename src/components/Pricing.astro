@@ -1,9 +1,9 @@
 ---
-import { audits, launch } from '../data/pricing';
+import { plans, launch } from '../data/pricing';
 import { ui, type Locale } from '../i18n';
 const { locale } = Astro.props as { locale: Locale };
 const t = ui[locale].pricing;
-const colors = ['var(--lemon)', 'var(--mint)'];
+const colors = ['var(--lemon)', 'var(--mint)', 'var(--cornflower)'];
 const left = launch.total - launch.booked;
 const usd = (n: number) => `$${n.toLocaleString('en-US')}`;
 ---
@@ -13,7 +13,7 @@ const usd = (n: number) => `$${n.toLocaleString('en-US')}`;
     <p class="lead reveal">{t.lead}</p>
   </div>
   <ul class="plans">
-    {audits.map((a, i) => (
+    {plans.map((a, i) => (
       <li class="plan reveal" style={`--f:${colors[i]}`}>
         <div>
           <h3>{t.plans[i].name}</h3>
@@ -22,14 +22,17 @@ const usd = (n: number) => `$${n.toLocaleString('en-US')}`;
         <p>{t.plans[i].text}</p>
         <ul class="plan-list">{t.plans[i].list.map((x) => <li>{x}</li>)}</ul>
         <div class="plan-price">
-          {left > 0 ? (
+          {a.launch && left > 0 ? (
             <>
               <p class="plan-amount"><bdi dir="ltr">{usd(a.launch)}</bdi></p>
               <p class="small">{t.launch}</p>
               <p class="small">{t.regular}: <bdi dir="ltr">{usd(a.regular)}</bdi></p>
             </>
           ) : (
-            <p class="plan-amount"><bdi dir="ltr">{usd(a.regular)}</bdi></p>
+            <>
+              <p class="plan-amount"><bdi dir="ltr">{usd(a.regular)}</bdi></p>
+              {!a.launch && <p class="small">{t.fixed}</p>}
+            </>
           )}
         </div>
       </li>
