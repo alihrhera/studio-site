@@ -29,7 +29,7 @@ const heading = t.workHeading((await getCollection('projects')).length);
         <li class="fl reveal" style={`--f:${f.color}`}>
           <h3>{f.name}</h3>
           <ul>{t.work.freelanceItems[f.id].map((x) => <li>{x}</li>)}</ul>
-          {f.link && <a class="link" href={f.link} target="_blank" rel="noopener">{t.case.view}</a>}
+          {f.link && <a class="link" href={f.link} target="_blank" rel="noopener">{f.play ? t.case.play : t.case.view}</a>}
         </li>
       ))}
     </ul>

@@ -18,12 +18,14 @@ shots:
     kind: wide
 problem: Editors needed to publish reels, jobs and news from one place without a developer.
 solution: A dashboard and API for reels, job posts and news, with an editorial workflow.
+link: "https://libyakn.com/"
 done:
   - "A full video-filtering pipeline connected to more than one AI model"
   - "Text filtering"
   - "Assorted fixes"
   - "A full redesign of the app"
   - "Design of the online-banking operations inside the app"
+  - "Running the project and following its maintenance"
 ar:
   publicName: "منصة محتوى ووظائف"
   summary: "لوحة تحكم تدير الفيديوهات القصيرة والوظائف والأخبار لمنتج محتوى."
@@ -36,6 +38,7 @@ ar:
     - "إصلاحات متفرقة"
     - "إعادة تصميم التطبيق بالكامل"
     - "تصميم عمليات البنك الإلكتروني داخل التطبيق"
+    - "إدارة المشروع ومتابعة صيانته"
   alts: ["لوحة إدارة منصة المحتوى والوظائف", "شاشة تسجيل الدخول لإدارة المنصة"]
 fragment:
   kind: dashboard

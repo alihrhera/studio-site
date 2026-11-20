@@ -26,6 +26,7 @@ shots:
     height: 1561
 problem: A live grocery business needed changes to products, prices and screens without waiting for an app release.
 solution: Server-driven screens in the mobile app, so layout changes ship from the dashboard, plus an admin panel for orders and catalogue.
+link: "https://dishamarket.com/"
 done:
   - "An AI-powered query builder, fully integrated, that turns plain-language questions into queries"
   - "An AI-powered report builder that generates reports from plain-language requests"
