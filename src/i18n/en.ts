@@ -29,10 +29,16 @@ export const en = {
     pageDescription: 'Case studies of apps, APIs and dashboards we built, and what our part was in each.',
     lead: 'Some were ours, some we built inside a client\'s team. Each page says which part we did.',
     freelanceHead: 'Freelance work',
-    freelance: 'We also work on products other teams built. On Zajil, Hadreen and Taxigo that meant fixes and improvements, getting the app running, better performance and a smoother user experience.',
+    freelance: 'We also work on products other teams built.',
+    freelanceItems: {
+      zajil: ['Installed the system and ran the launch', 'Let customers write an order from outside the app and pay for it inside', 'Fixed notifications and how delivery drivers are notified, and built the driver-assignment algorithm', 'Fixed payment flows', 'Full app optimisation'],
+      gofo: ['Installed the system and ran the launch', 'Fixed payment flows', 'Full app optimisation'],
+      hadreen: ['Installed the system and ran the launch', 'Fixed payment flows', 'Full app optimisation'],
+      taxigo: ['Fixes and improvements', 'Getting the app running', 'Better performance', 'A smoother user experience'],
+    } as Record<string, string[]>,
   },
   case: {
-    title: (n: string) => `${n}: case study`, back: 'All work', period: 'Period', problem: 'The problem', built: 'What we built', result: 'The result', next: 'Next:',
+    title: (n: string) => `${n}: case study`, back: 'All work', period: 'Period', done: 'What we did', view: 'View the project', problem: 'The problem', built: 'What we built', result: 'The result', next: 'Next:',
     sample: (l: string) => `Sample ${l} screen`, sampleFrom: (n: string) => `Sample screen from ${n}`, sampleLayerFrom: (l: string, n: string) => `Sample ${l} screen from ${n}`,
   },
   layersSection: { head: 'Three layers. One product. One squad.', shipped: 'Shipped in: ' },

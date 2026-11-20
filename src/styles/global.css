@@ -150,6 +150,14 @@ a { color: inherit; }
 .pricing-foot { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 24px 32px; }
 .pricing-notes { display: grid; gap: 8px; max-inline-size: 60ch; }
 
+/* Freelance and case-study work lists */
+.fl-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+.fl { background: var(--f); color: var(--deep); padding: 20px; display: grid; gap: 16px; align-content: start; justify-items: start; }
+.fl h3 { font-size: var(--step-lead); font-weight: 500; letter-spacing: -0.02em; line-height: 1.1; }
+.fl ul, .done { display: grid; gap: 8px; font-weight: 500; }
+.done { grid-column: 7 / -1; max-inline-size: 60ch; font-size: var(--step-lead); line-height: 1.3; letter-spacing: -0.015em; }
+.case-hero .btn { align-self: flex-start; }
+
 /* Team */
 .team { background: var(--surface-2); padding: var(--section) var(--margin); display: grid; gap: clamp(40px, 6vw, 96px); }
 .people { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
@@ -229,7 +237,8 @@ a { color: inherit; }
   .tiles { grid-template-columns: 1fr; }
   .stage--1 .tile { block-size: 34vw; } .stage--2 .tile { block-size: 46vw; } .stage--3 .tile { block-size: 62vw; }
   .people { grid-template-columns: 1fr 1fr; }
-  .plans { grid-template-columns: 1fr; }
+  .plans, .fl-grid { grid-template-columns: 1fr; }
+  .done { grid-column: 1 / -1; }
   .plan { min-block-size: 0; }
   .audit-foot .btn { justify-self: stretch; }
   .facts div { grid-template-columns: 6rem 1fr; }

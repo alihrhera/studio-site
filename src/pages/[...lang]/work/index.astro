@@ -5,6 +5,7 @@ import WorkChapters from '../../../components/WorkChapters.astro';
 import Audit from '../../../components/Audit.astro';
 import Footer from '../../../components/Footer.astro';
 import { ui, type Locale } from '../../../i18n';
+import { freelance } from '../../../data/freelance';
 
 export const getStaticPaths = () => [
   { params: { lang: undefined }, props: { locale: 'en' } },
@@ -23,6 +24,15 @@ const heading = t.workHeading((await getCollection('projects')).length);
   <section class="page-head" data-field="#f2eee6" data-ink="#16181d">
     <h2 class="head reveal">{t.work.freelanceHead}</h2>
     <p class="lead reveal">{t.work.freelance}</p>
+    <ul class="fl-grid">
+      {freelance.map((f) => (
+        <li class="fl reveal" style={`--f:${f.color}`}>
+          <h3>{f.name}</h3>
+          <ul>{t.work.freelanceItems[f.id].map((x) => <li>{x}</li>)}</ul>
+          {f.link && <a class="link" href={f.link} target="_blank" rel="noopener">{t.case.view}</a>}
+        </li>
+      ))}
+    </ul>
   </section>
   <Audit locale={locale} />
   <Footer locale={locale} />

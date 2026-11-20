@@ -26,12 +26,26 @@ shots:
     height: 1561
 problem: A live grocery business needed changes to products, prices and screens without waiting for an app release.
 solution: Server-driven screens in the mobile app, so layout changes ship from the dashboard, plus an admin panel for orders and catalogue.
+done:
+  - "An AI-powered query builder, fully integrated, that turns plain-language questions into queries"
+  - "An AI-powered report builder that generates reports from plain-language requests"
+  - "An app for order preparers"
+  - "A redesign of the customer app"
+  - "Improvements and optimisation across the app"
+  - "AI integration when creating or editing a product"
 ar:
   publicName: "منصة توصيل بقالة"
   summary: "متجر بقالة إلكتروني: تطبيق للعملاء ولوحة إدارة وواجهة API، تعمل فعليًا."
   role: "صيانة وميزات جديدة في التطبيق والـ API ولوحة التحكم"
   problem: "نشاط بقالة يعمل فعليًا احتاج إلى تغيير المنتجات والأسعار والشاشات دون انتظار إصدار جديد للتطبيق."
   solution: "شاشات يقودها الخادم داخل تطبيق الموبايل، فتصل تغييرات التصميم من لوحة التحكم، مع لوحة إدارة للطلبات والكتالوج."
+  done:
+    - "منشئ استعلامات (Query Builder) متكامل ومدعوم بالذكاء الاصطناعي، يحوّل السؤال بلغة طبيعية إلى استعلام"
+    - "منشئ تقارير مدعوم بالذكاء الاصطناعي، يولّد التقرير من طلب بلغة طبيعية"
+    - "تطبيق لمحضّري الطلبات"
+    - "إعادة تصميم تطبيق العميل"
+    - "تحسينات وتحسين أداء في التطبيق"
+    - "تكامل الذكاء الاصطناعي في إنشاء المنتج وتعديله"
   alts: ["الشاشة الرئيسية لتطبيق العميل مع عروض المنتجات", "تطبيق العميل مع احتياجات اليوم وتوصيلة واحدة", "تطبيق العميل مع التوصيل خلال ٢٤ ساعة"]
 fragment:
   kind: dashboard

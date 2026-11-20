@@ -23,6 +23,7 @@ const shots = shotsFor(p, locale);
     <a class="link back" href={url('work/', locale)}>{t.case.back}</a>
     <h1 class="display reveal">{name}</h1>
     <p class="lead reveal">{copy.summary}</p>
+    {p.data.link && <a class="btn reveal" href={p.data.link} target="_blank" rel="noopener">{t.case.view}</a>}
   </section>
 
   <section class="case-meta" data-field="#f2eee6" data-ink="#16181d">
@@ -61,6 +62,13 @@ const shots = shotsFor(p, locale);
       </div>
     )}
   </section>
+
+  {copy.done.length > 0 && (
+    <section class="case-block" data-field="#dfd9cb" data-ink="#16181d">
+      <h2 class="head reveal">{t.case.done}</h2>
+      <ul class="done reveal">{copy.done.map((x) => <li>{x}</li>)}</ul>
+    </section>
+  )}
 
   {copy.result && (
     <section class="case-block" data-field="#f2eee6" data-ink="#16181d">

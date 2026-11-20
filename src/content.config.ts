@@ -20,6 +20,8 @@ const projects = defineCollection({
     problem: z.string(),
     solution: z.string(),
     result: z.string().optional(), // only real, approved results
+    done: z.array(z.string()).default([]), // what we did, one line each
+    link: z.string().url().optional(), // public page of the product, shown as a button
     // Real pictures. Shown only when permission is true.
     shots: z.array(z.object({ src: z.string(), alt: z.string(), kind: z.enum(['wide', 'phone']), width: z.number().default(1440), height: z.number().default(900) })).default([]),
     // Arabic copy for the same fields. Names of products stay in Latin. `alts` follows `shots` by index.
@@ -30,6 +32,7 @@ const projects = defineCollection({
       problem: z.string(),
       solution: z.string(),
       result: z.string().optional(),
+      done: z.array(z.string()).default([]),
       alts: z.array(z.string()).default([]),
     }),
     fragment: z.object({
