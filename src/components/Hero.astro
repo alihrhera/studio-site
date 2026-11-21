@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import { layers, shownName, sorted, url } from '../data/layers';
 import { ui, type Locale } from '../i18n';
+import { bookAttrs, bookHref } from '../data/booking';
 
 const { locale } = Astro.props as { locale: Locale };
 const t = ui[locale];
@@ -15,7 +16,7 @@ const forLayer = (id: string) => projects.filter((p) => p.data.layers.includes(i
     <div class="hero-copy">
       <p class="lead reveal">{t.hero.lead}</p>
       <div class="hero-actions reveal">
-        <a class="btn btn--accent" href={`mailto:info@pollenbyte.com?subject=${encodeURIComponent(t.audit.subject)}`}>{t.hero.cta}</a>
+        <a class="btn btn--accent" href={bookHref(`mailto:info@pollenbyte.com?subject=${encodeURIComponent(t.audit.subject)}`)} {...bookAttrs}>{t.hero.cta}</a>
         <a class="link" href={url('work/', locale)}>{t.hero.see}</a>
       </div>
       <ul class="picker reveal" aria-label={t.hero.pickerAria}>

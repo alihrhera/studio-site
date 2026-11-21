@@ -4,6 +4,7 @@ import '@fontsource-variable/cairo';
 import '../styles/tokens.css';
 import '../styles/global.css';
 import { url } from '../data/layers';
+import { bookAttrs, bookHref } from '../data/booking';
 import { dirOf, otherLocale, ui, type Locale } from '../i18n';
 import Wordmark from '../components/Wordmark.astro';
 
@@ -51,7 +52,7 @@ const abs = (l: Locale) => (Astro.site ? new URL(url(rest, l), Astro.site).href 
         <a href={url('#team', locale)}>{t.nav.team}</a>
       </nav>
       <a class="nav-lang" href={url(rest, other)} lang={other} hreflang={other}>{t.switchTo}</a>
-      <a class="btn" href={url('#audit', locale)}>{t.nav.cta}</a>
+      <a class="btn" href={bookHref(url('#audit', locale))} {...bookAttrs}>{t.nav.cta}</a>
     </header>
     <main>
       <slot />

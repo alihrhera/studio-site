@@ -1,6 +1,7 @@
 ---
 import { plans, launch } from '../data/pricing';
 import { ui, type Locale } from '../i18n';
+import { bookAttrs, bookHref } from '../data/booking';
 const { locale } = Astro.props as { locale: Locale };
 const t = ui[locale].pricing;
 const colors = ['var(--lemon)', 'var(--mint)', 'var(--cornflower)'];
@@ -44,6 +45,6 @@ const usd = (n: number) => `$${n.toLocaleString('en-US')}`;
       <p class="small reveal">{t.call}</p>
       <p class="small reveal">{t.more}</p>
     </div>
-    <a class="btn btn--accent reveal" href={`mailto:info@pollenbyte.com?subject=${encodeURIComponent(t.subject)}`}>{t.cta}</a>
+    <a class="btn btn--accent reveal" href={bookHref(`mailto:info@pollenbyte.com?subject=${encodeURIComponent(t.subject)}`)} {...bookAttrs}>{t.cta}</a>
   </div>
 </section>

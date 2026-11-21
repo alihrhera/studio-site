@@ -5,7 +5,7 @@ export const en = {
   sep: ', ',
   langName: 'English',
   switchTo: 'العربية',
-  nav: { home: 'Home', main: 'Main', work: 'Work', cover: 'What we cover', pricing: 'Pricing', team: 'Team', cta: 'Book an audit' },
+  nav: { home: 'Home', main: 'Main', work: 'Work', cover: 'What we cover', pricing: 'Pricing', team: 'Team', cta: 'Book a free call' },
   home: { title: 'A product squad for apps, APIs and dashboards', description: 'We ship the whole product: mobile app, API and dashboard.' },
   layers: {
     mobile: { label: 'Mobile', blurb: 'Apps for iOS and Android. Offline-first, secure by default, with screens you can change without a store release.' },
@@ -15,7 +15,7 @@ export const en = {
   hero: {
     title: 'We ship the whole product.',
     lead: 'Mobile, API and dashboard from one team. The whole product, end to end.',
-    cta: 'Book a one-week audit',
+    cta: 'Book a free call',
     see: 'See our work',
     pickerAria: 'Pick a layer to see where we shipped it',
     pickerNote: 'Pick a layer to see which products we shipped in it.',
@@ -64,7 +64,7 @@ export const en = {
     left: (n: number, total: number) => `${n} of ${total} launch-price audits left`,
     call: 'A free 30-minute call comes first, to decide which one fits.',
     more: 'Building a product, or need a team by the month? We quote a fixed price in writing after the audit or the scoping.',
-    cta: 'Book the free call',
+    cta: 'Book a free call',
     subject: 'Free call request',
   },
   team: {
@@ -80,8 +80,8 @@ export const en = {
   audit: {
     head: 'Start with one week.',
     lead: 'A fixed-price audit of your app, API or dashboard. You get a written report and a plan, and we quote before any work starts.',
-    cta: 'Book the audit',
-    subject: 'Audit request',
+    cta: 'Book a free call',
+    subject: 'Free call request',
   },
   faq: {
     head: 'Questions we hear first.',

@@ -1,5 +1,6 @@
 ---
 import { ui, type Locale } from '../i18n';
+import { bookAttrs, bookHref } from '../data/booking';
 const { locale } = Astro.props as { locale: Locale };
 const t = ui[locale].audit;
 ---
@@ -7,6 +8,6 @@ const t = ui[locale].audit;
   <h2 class="head reveal">{t.head}</h2>
   <div class="audit-foot">
     <p class="lead reveal">{t.lead}</p>
-    <a class="btn btn--ink reveal" href={`mailto:info@pollenbyte.com?subject=${encodeURIComponent(t.subject)}`}>{t.cta}</a>
+    <a class="btn btn--ink reveal" href={bookHref(`mailto:info@pollenbyte.com?subject=${encodeURIComponent(t.subject)}`)} {...bookAttrs}>{t.cta}</a>
   </div>
 </section>
