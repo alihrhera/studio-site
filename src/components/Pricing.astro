@@ -45,6 +45,6 @@ const usd = (n: number) => `$${n.toLocaleString('en-US')}`;
       <p class="small reveal">{t.call}</p>
       <p class="small reveal">{t.more}</p>
     </div>
-    <a class="btn btn--accent reveal" href={bookHref(`mailto:info@pollenbyte.com?subject=${encodeURIComponent(t.subject)}`)} {...bookAttrs}>{t.cta}</a>
+    <a class="btn btn--accent reveal" href={bookHref(locale, `mailto:info@pollenbyte.com?subject=${encodeURIComponent(t.subject)}`)} {...bookAttrs}>{t.cta}</a>
   </div>
 </section>

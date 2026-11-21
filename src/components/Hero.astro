@@ -16,7 +16,7 @@ const forLayer = (id: string) => projects.filter((p) => p.data.layers.includes(i
     <div class="hero-copy">
       <p class="lead reveal">{t.hero.lead}</p>
       <div class="hero-actions reveal">
-        <a class="btn btn--accent" href={bookHref(`mailto:info@pollenbyte.com?subject=${encodeURIComponent(t.audit.subject)}`)} {...bookAttrs}>{t.hero.cta}</a>
+        <a class="btn btn--accent" href={bookHref(locale, `mailto:info@pollenbyte.com?subject=${encodeURIComponent(t.audit.subject)}`)} {...bookAttrs}>{t.hero.cta}</a>
         <a class="link" href={url('work/', locale)}>{t.hero.see}</a>
       </div>
       <ul class="picker reveal" aria-label={t.hero.pickerAria}>

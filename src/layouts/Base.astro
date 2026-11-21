@@ -52,7 +52,7 @@ const abs = (l: Locale) => (Astro.site ? new URL(url(rest, l), Astro.site).href 
         <a href={url('#team', locale)}>{t.nav.team}</a>
       </nav>
       <a class="nav-lang" href={url(rest, other)} lang={other} hreflang={other}>{t.switchTo}</a>
-      <a class="btn" href={bookHref(url('#audit', locale))} {...bookAttrs}>{t.nav.cta}</a>
+      <a class="btn" href={bookHref(locale, url('#audit', locale))} {...bookAttrs}>{t.nav.cta}</a>
     </header>
     <main>
       <slot />

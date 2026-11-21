@@ -8,6 +8,6 @@ const t = ui[locale].audit;
   <h2 class="head reveal">{t.head}</h2>
   <div class="audit-foot">
     <p class="lead reveal">{t.lead}</p>
-    <a class="btn btn--ink reveal" href={bookHref(`mailto:info@pollenbyte.com?subject=${encodeURIComponent(t.subject)}`)} {...bookAttrs}>{t.cta}</a>
+    <a class="btn btn--ink reveal" href={bookHref(locale, `mailto:info@pollenbyte.com?subject=${encodeURIComponent(t.subject)}`)} {...bookAttrs}>{t.cta}</a>
   </div>
 </section>
